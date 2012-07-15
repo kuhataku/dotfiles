@@ -30,7 +30,7 @@ set nobackup
 " ----------------------------------
 " クリップボードとヤンクを共有
 " ----------------------------------
-set clipboard=unnamed
+set clipboard=unnamed,autoselect
 
 " --------------------------------
 " 補完候補表示中はShiftEnterで改行
@@ -112,7 +112,32 @@ highlight PMenuSbar ctermbg=4
 hi StatusLine  term=BOLD cterm=NONE ctermfg=White   ctermbg=DarkBlue
 
 " pathogen
-call pathogen#runtime_append_all_bundles()
+"call pathogen#runtime_append_all_bundles()
+
+" neobundle
+set nocompatible
+filetype off
+
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim
+  call neobundle#rc(expand('~/.vim/neobundle'))
+endif
+
+"NeoBundle 'git://github.com/Shougo/clang_complete.git'
+"NeoBundle 'git://github.com/Shougo/echodoc.git'
+NeoBundle 'git://github.com/Shougo/neocomplcache.git'
+NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
+NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'git://github.com/anyakichi/vim-surround.git'
+"NeoBundle 'git://github.com/Shougo/vim-vcs.git'
+"NeoBundle 'git://github.com/Shougo/vimfiler.git'
+"NeoBundle 'git://github.com/Shougo/vimshell.git'
+"NeoBundle 'git://github.com/Shougo/vinarise.git'
+NeoBundle 'git://github.com/vim-scripts/tComment.git'
+NeoBundle 'git://github.com/vim-scripts/Align.git'
+
+filetype plugin on
+filetype indent on
 
 " ref.vim
 nmap ,ra :<C-u>Ref alc<Space>
