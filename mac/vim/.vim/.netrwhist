@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/Users/takuya/Works/ISDL'
+let g:netrw_dirhist_2='/Users/takuya/Works/ISDL/tkuhara-Photonmapping'
+let g:netrw_dirhist_3='/Users/takuya/Works/ISDL/tkuhara-Photonmapping/C'
+let g:netrw_dirhist_4='/Users/takuya/Works/ISDL/tkuhara-Photonmapping/C/int_photonmapping'
+let g:netrw_dirhist_5='/Users/takuya/Works/ISDL'
+let g:netrw_dirhist_6='/Users/takuya/Works/ISDL/tkuhara-Photonmapping'
+let g:netrw_dirhist_7='/Users/takuya/Works/ISDL/tkuhara-Photonmapping/C'
+let g:netrw_dirhist_8='/Users/takuya/Works/ISDL/tkuhara-Photonmapping/C/int_photonmapping'
+let g:netrw_dirhist_9='/Users/takuya/Dropbox/Public/dotfiles/mac/vim/.vim'
