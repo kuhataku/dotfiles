@@ -1,3 +1,4 @@
+set tabstop=8 sts=4 sw=4
 "python
 "
 autocmd FileType python setl smartindent cinwords=if,else,elif,while,try,exept,finally,def,class
@@ -37,39 +38,6 @@ set clipboard=unnamed,autoselect
 " --------------------------------
 inoremap <S-CR> <C-p><CR>
 
-" ------------------------------------------
-" 挿入モード時、ステータスラインの色を変更
-" ------------------------------------------
-let g:hi_insert = 'highlight StatusLine guifg=darkblue guibg=darkyellow gui=none ctermfg=blue ctermbg=yellow cterm=none'
-
-if has('syntax')
-  augroup InsertHook
-    autocmd!
-    autocmd InsertEnter * call s:StatusLine('Enter')
-    autocmd InsertLeave * call s:StatusLine('Leave')
-  augroup END
-endif
-
-let s:slhlcmd = ''
-function! s:StatusLine(mode)
-  if a:mode == 'Enter'
-    silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
-    silent exec g:hi_insert
-  else
-    highlight clear StatusLine
-    silent exec s:slhlcmd
-  endif
-endfunction
-
-function! s:GetHighlight(hi)
-  redir => hl
-  exec 'highlight '.a:hi
-  redir END
-  let hl = substitute(hl, '[\r\n]', '', 'g')
-  let hl = substitute(hl, 'xxx', '', '')
-  return hl
-endfunction
-
 " ------------------------
 " ノーマルモードでも改行
 " ------------------------
@@ -84,11 +52,6 @@ inoremap ( ()<LEFT>
 inoremap ” “”<LEFT>
 inoremap " ""<LEFT>
 inoremap ‘ ”<LEFT>
-vnoremap { “zdi^V{z}<LEFT>
-vnoremap [ “zdi^V[z]<LEFT>
-vnoremap ( “zdi^V(z)<LEFT>
-vnoremap ” “zdi^V”z^V”<LEFT>
-vnoremap ‘ “zdi’z’<LEFT>
 " ------------------------
 " ShiftUPDOWNで進みすぎないようにする
 " ------------------------
@@ -109,10 +72,7 @@ highlight Pmenu ctermbg=4
 highlight PmenuSel ctermbg=1
 highlight PMenuSbar ctermbg=4
 
-hi StatusLine  term=BOLD cterm=NONE ctermfg=White   ctermbg=DarkBlue
-
-" pathogen
-"call pathogen#runtime_append_all_bundles()
+"hi StatusLine  term=BOLD cterm=NONE ctermfg=White   ctermbg=DarkBlue
 
 " neobundle
 set nocompatible
@@ -135,15 +95,16 @@ NeoBundle 'git://github.com/anyakichi/vim-surround.git'
 "NeoBundle 'git://github.com/Shougo/vinarise.git'
 NeoBundle 'git://github.com/vim-scripts/tComment.git'
 NeoBundle 'git://github.com/vim-scripts/Align.git'
+NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 
 filetype plugin on
 filetype indent on
 
-" ref.vim
-nmap ,ra :<C-u>Ref alc<Space>
-let g:ref_alc_start_linenumber = 39
-let g:ref_alc_encoding = 'Shift-JIS'
-let g:ref_alc_cmd='lynx -dump -nonumbers %s'
+"" ref.vim
+""nmap ,ra :<C-u>Ref alc<Space>
+""let g:ref_alc_start_linenumber = 39
+""let g:ref_alc_encoding = 'Shift-JIS'
+""let g:ref_alc_cmd='lynx -dump -nonumbers %s'
 
 " PATH
 let $PATH="/home/takuya/.vim:".$PATH
@@ -164,4 +125,7 @@ nmap <ESC><ESC> :nohlsearch<CR><ESC>
 map <C-Left> <Left>
 set cursorline
 hi cursorline term=reverse cterm=none ctermbg=242
+
+" Vim-powerline
+let g:Powerline_symbles = 'fancy'
 set t_Co=256

@@ -3,4 +3,4 @@ set cursorline
 set guioptions-=T
 set guioptions-=m
 colorscheme torte
-set guifont=Osaka-Mono:h14
+set guifont=Ritchy-Bold-Powerline.otf
