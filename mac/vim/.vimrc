@@ -27,6 +27,7 @@ set formatoptions+=mM
 " バックアップファイルを作成しない (次行の先頭の " を削除すれば有効になる)
 set nobackup
 
+syntax on
 
 " ----------------------------------
 " クリップボードとヤンクを共有
@@ -88,6 +89,7 @@ endif
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'git://github.com/Shougo/neocomplcache-snippets-complete.git'
 NeoBundle 'git://github.com/anyakichi/vim-surround.git'
 "NeoBundle 'git://github.com/Shougo/vim-vcs.git'
 "NeoBundle 'git://github.com/Shougo/vimfiler.git'
@@ -96,15 +98,18 @@ NeoBundle 'git://github.com/anyakichi/vim-surround.git'
 NeoBundle 'git://github.com/vim-scripts/tComment.git'
 NeoBundle 'git://github.com/vim-scripts/Align.git'
 NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
-
+NeoBundle 'git://github.com/mattn/webapi-vim.git'
+NeoBundle 'git://github.com/basyura/twibill.vim.git'
+NeoBundle 'git://github.com/tyru/open-browser.vim.git'
+NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
+NeoBundle 'git://github.com/basyura/bitly.vim.git'
+NeoBundle 'git://github.com/basyura/TweetVim.git'
 filetype plugin on
 filetype indent on
 
-"" ref.vim
-""nmap ,ra :<C-u>Ref alc<Space>
-""let g:ref_alc_start_linenumber = 39
-""let g:ref_alc_encoding = 'Shift-JIS'
-""let g:ref_alc_cmd='lynx -dump -nonumbers %s'
+" Vim-powerline
+let g:Powerline_symbols = 'fancy'
+set t_Co=256
 
 " PATH
 let $PATH="/home/takuya/.vim:".$PATH
@@ -126,6 +131,3 @@ map <C-Left> <Left>
 set cursorline
 hi cursorline term=reverse cterm=none ctermbg=242
 
-" Vim-powerline
-let g:Powerline_symbles = 'fancy'
-set t_Co=256
