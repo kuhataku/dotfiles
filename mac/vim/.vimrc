@@ -112,7 +112,7 @@ let g:Powerline_symbols = 'fancy'
 set t_Co=256
 
 " PATH
-let $PATH="/home/takuya/.vim:".$PATH
+let $PATH="~/.vim:".$PATH
 
 " neocompl
 let g:neocomplcache_enable_at_startup = 1
