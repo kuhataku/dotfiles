@@ -1,4 +1,0 @@
-colorscheme torte
-set transparency=22
-set cursorline
-nmap <ESC><ESC> :nohlsearch<CR><ESC>
