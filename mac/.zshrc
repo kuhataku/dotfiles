@@ -183,7 +183,6 @@ function zle-line-init(){
     auto-fu-init
 }
 zle -N zle-line-init
-
 alias peep='~/.zsh/peep/peep'
 export BROWSER=w3m
 
