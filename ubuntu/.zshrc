@@ -17,7 +17,7 @@ case ${UID} in
   PROMPT="{${fg[red]}%}[%T]$ "
   PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
   SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-  RPROMPT="%B%{${fg[green]}%}[%/]%{${reset_color}%}%b"
+  RPROMPT="%B%{${fg[red]}%}[%/]%{${reset_color}%}%b"
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
   PROMPT="%{${fg[white]}%}${PROMPT}"
   ;;
@@ -26,11 +26,11 @@ case ${UID} in
   PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
   SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-  RPROMPT="%{${fg[green]}%}[%/]%{${reset_color}%}%b"
+  RPROMPT="%{${fg[red]}%}[%/]%{${reset_color}%}%b"
   PROMPT="%{${fg[white]}%}${PROMPT}"
   ;;
 esac
-RPROMPT="%{${fg[green]}%}[%/]%{${reset_color}%}%b"
+RPROMPT="%{${fg[red]}%}[%/]%{${reset_color}%}%b"
 # auto change directory
 #
 setopt auto_cd
@@ -166,15 +166,11 @@ kterm*|xterm*)
 esac
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
-export PATH="/Applications/UpTeX.app/teTeX/bin:$PATH"
-
-alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim -g "$@"'
-alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-. `brew --prefix`/etc/profile.d/z.sh
+. ~/.dotfiles/dotfiles/ubuntu/z/z.sh
 function precmd () {
   z --add "$(pwd -P)"
 }
@@ -186,24 +182,3 @@ zle -N zle-line-init
 
 alias peep='~/.zsh/peep/peep'
 export BROWSER=w3m
-
-tmux_localworks(){
-    tmux new-window -n splitwindow;
-    tmux send-keys -t:splitwindow "cd ~/Works/ISDL" C-m;
-    tmux new-window -n twitter;
-    tmux send-keys -t:twitter "vim -c TweetVimHomeTimeline" C-m;
-    tmux new-window -n peep;
-    tmux send-keys -t:peep  "peep" C-m
-}
-
-tmux_kappaworks(){
-    tmux new-session -s works;
-    tmux new-window -a -n splitwindow;
-    tmux send-keys -t splitwindow "cd ~/Works/ISDL" C-m
-    tmux new-window -a -n kappa;
-    tmux send-keys -t kappa "ssh takuya@kappa" C-m
-    tmux new-window -a -n twitter;
-    tmux send-keys -t twitter "vim -c TweetVimHomeTimeline" C-m
-    tmux new-window -a -n peep;
-    tmux send-keys -t peep  "peep" C-m
-}

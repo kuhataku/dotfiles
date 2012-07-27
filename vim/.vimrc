@@ -115,10 +115,6 @@ NeoBundle 'git://github.com/basyura/TweetVim.git'
 filetype plugin on
 filetype indent on
 
-" Vim-powerline
-let g:Powerline_symbols = 'fancy'
-set t_Co=256
-
 " PATH
 let $PATH="~/.vim:".$PATH
 
@@ -139,3 +135,6 @@ map <C-Left> <Left>
 set cursorline
 hi cursorline term=reverse cterm=none ctermbg=242
 
+" Vim-powerline
+let g:Powerline_symbols = 'fancy'
+set t_Co=256
