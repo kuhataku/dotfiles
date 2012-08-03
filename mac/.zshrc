@@ -22,7 +22,7 @@ case ${UID} in
   PROMPT="%{${fg[white]}%}${PROMPT}"
   ;;
 *)
-  PROMPT="%{${fg[white]}%}[ %{${fg[blue]}%}%T%{${fg[white]}%} ] > "
+  PROMPT="%{${fg[white]}%}[ %{${fg[blue]}%}%T%{${fg[white]}%} ] $ "
   PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
   SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
@@ -189,6 +189,7 @@ export BROWSER=w3m
 tmux_localworks(){
     tmux new-window -n splitwindow;
     tmux send-keys -t:splitwindow "cd ~/Works/ISDL" C-m;
+    tmux split-window -w;
     tmux new-window -n twitter;
     tmux send-keys -t:twitter "vim -c TweetVimHomeTimeline" C-m;
     tmux new-window -n peep;

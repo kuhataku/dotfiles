@@ -112,6 +112,8 @@ NeoBundle 'git://github.com/tyru/open-browser.vim.git'
 NeoBundle 'git://github.com/h1mesuke/unite-outline.git'
 NeoBundle 'git://github.com/basyura/bitly.vim.git'
 NeoBundle 'git://github.com/basyura/TweetVim.git'
+
+NeoBundle 'git://github.com/mattn/zencoding-vim.git'
 filetype plugin on
 filetype indent on
 
