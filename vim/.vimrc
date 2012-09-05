@@ -124,7 +124,7 @@ let $PATH="~/.vim:".$PATH
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_auto_select = 1
 let g:neocomplcache_enable_underbar_completion = 1
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
+imap <C-s> <Plug>(neocomplcache_snippets_expand)
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
 
