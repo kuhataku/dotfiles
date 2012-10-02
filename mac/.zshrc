@@ -49,7 +49,7 @@ setopt list_packed
 
 # no remove postfix slash of command line
 #
-# setopt noautoremoveslash
+setopt autoremoveslash
 
 # no beep sound when complete list displayed
 #
@@ -207,3 +207,6 @@ tmux_kappaworks(){
     tmux new-window -a -n peep;
     tmux send-keys -t peep  "peep" C-m
 }
+
+setopt auto_cd
+function chpwd() { ls }

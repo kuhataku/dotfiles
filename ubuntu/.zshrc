@@ -170,7 +170,7 @@ export MANPATH=/opt/local/man:$MANPATH
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-. ~/.dotfiles/dotfiles/ubuntu/z/z.sh
+. ~/.zsh/z.sh
 function precmd () {
   z --add "$(pwd -P)"
 }
