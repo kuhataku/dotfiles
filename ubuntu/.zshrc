@@ -182,3 +182,4 @@ zle -N zle-line-init
 
 alias peep='~/.zsh/peep/peep'
 export BROWSER=w3m
+alias tmux="SHELL=/usr/local/bin/zsh tmux"
