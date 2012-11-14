@@ -1,3 +1,5 @@
+set laststatus=2
+
 set tabstop=4 sts=2 sw=2
 "python
 "
@@ -97,7 +99,8 @@ endif
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
-NeoBundle 'git://github.com/Shougo/neocomplcache-snippets-complete.git'
+" NeoBundle 'git://github.com/Shougo/neocomplcache-snippets-complete.git'
+NeoBundle 'git://github.com/Shougo/neosnippet.git'
 NeoBundle 'git://github.com/anyakichi/vim-surround.git'
 "NeoBundle 'git://github.com/Shougo/vim-vcs.git'
 "NeoBundle 'git://github.com/Shougo/vimfiler.git'
@@ -140,3 +143,4 @@ hi cursorline term=reverse cterm=none ctermbg=242
 " Vim-powerline
 let g:Powerline_symbols = 'fancy'
 set t_Co=256
+colorscheme torte

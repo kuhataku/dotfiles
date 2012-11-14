@@ -14,7 +14,7 @@ autoload colors
 colors
 case ${UID} in
 0)
-  PROMPT="{${fg[red]}%}[%T]$ "
+  PROMPT="{${fg[red]}%}<^L^>$ "
   PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
   SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
   RPROMPT="%B%{${fg[green]}%}[%/]%{${reset_color}%}%b"
@@ -22,7 +22,9 @@ case ${UID} in
   PROMPT="%{${fg[white]}%}${PROMPT}"
   ;;
 *)
-  PROMPT="%{${fg[white]}%}[ %{${fg[blue]}%}%T%{${fg[white]}%} ] $ "
+  PROMPT="%(?.%F{blue}<^L^><%f.%F{red}<.L.><%f) "
+  # PROMPT="{${fg[red]}%}<^L^>$ "
+  # PROMPT="%{${fg[white]}%}[ %{${fg[blue]}%}%T%{${fg[white]}%} ] $ "
   PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
   SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
@@ -34,6 +36,11 @@ RPROMPT="%{${fg[green]}%}[%/]%{${reset_color}%}%b"
 # auto change directory
 #
 setopt auto_cd
+
+## Completion configuration
+#
+autoload -U compinit
+compinit
 
 # auto directory pushd that you can get dirs list by cd -[tab]
 #
@@ -80,10 +87,6 @@ SAVEHIST=10000
 setopt hist_ignore_dups # ignore duplication command history list
 setopt share_history # share command history data
 
-## Completion configuration
-#
-autoload -U compinit
-compinit
 
 ## Alias configuration
 #
@@ -106,7 +109,7 @@ esac
 alias la="ls -a"
 alias lf="ls -F"
 alias ll="ls -l"
-alias less="/usr/share/vim/vimcurrent/macros/less.sh"
+# alias less="/usr/share/vim/vimcurrent/macros/less.sh"
 alias g="|grep"
 alias du="du -h"
 alias df="df -h"
@@ -208,5 +211,4 @@ tmux_kappaworks(){
     tmux send-keys -t peep  "peep" C-m
 }
 
-setopt auto_cd
 function chpwd() { ls }
