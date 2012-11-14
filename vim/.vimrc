@@ -144,3 +144,5 @@ hi cursorline term=reverse cterm=none ctermbg=242
 let g:Powerline_symbols = 'fancy'
 set t_Co=256
 colorscheme torte
+set encoding=utf-8
+set fillchars+=stl:\ ,stlnc:\
