@@ -146,3 +146,5 @@ set t_Co=256
 colorscheme torte
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
+set t_kD=
+set t_kb=
