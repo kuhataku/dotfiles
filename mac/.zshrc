@@ -56,7 +56,7 @@ setopt list_packed
 
 # no remove postfix slash of command line
 #
-unsetopt autoremoveslash
+setopt autoremoveslash
 
 # no beep sound when complete list displayed
 #
@@ -167,6 +167,7 @@ kterm*|xterm*)
     fi
     ;;
 esac
+export PATH=/usr/local/bin:$PATH
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export PATH="/Applications/UpTeX.app/teTeX/bin:$PATH"

@@ -1,6 +1,9 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_cnt =7
 let g:netrw_dirhist_1='/Users/takuya/Works/dotfiles/mac/screen'
 let g:netrw_dirhist_2='/Users/takuya/Works/dotfiles/mac'
 let g:netrw_dirhist_3='/Users/takuya/Works/dotfiles'
 let g:netrw_dirhist_4='/Users/takuya/Works/dotfiles/.zsh/auto-fu.zsh'
+let g:netrw_dirhist_5='/Users/takuya/Works/ISDL/tkuhara-papers/tkuhara-ARC13/tex/img'
+let g:netrw_dirhist_6='/Users/takuya/Works/ISDL/tkuhara-papers/tkuhara-ARC13/tex'
+let g:netrw_dirhist_7='/Users/takuya/Works/ISDL/tkuhara-papers/tkuhara-ARC13/tex/img'
