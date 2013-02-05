@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/Users/takuya/paper17_latex_sources/img'
+let g:netrw_dirhist_2='/Users/takuya'
+let g:netrw_dirhist_3='/Users/takuya/Works/hiraiwa/project_files/vivado_hls_project_files/vision_ml605_hls_05/edge_module_core'
+let g:netrw_dirhist_4='/Users/takuya/.rvm'
