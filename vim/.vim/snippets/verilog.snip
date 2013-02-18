@@ -1,0 +1,171 @@
+snippet	module
+abbr	module() endmodule;
+	module ${1:module_name} (${2:port_list}
+			);
+		${3:code};
+
+	endmodule//$1
+
+snippet	reg
+abbr	reg;
+	reg ${1:#:reg_name};
+	${2}
+
+snippet	regarray
+abbr	[] reg;
+	reg [${1}:${2:#:0}] ${3:#:reg_name};
+	${4}
+
+snippet	regmem
+abbr	[] reg [];
+	reg [${1}:${2:#:0}] ${3:#:reg_name} [${4}:${5:#:0}];
+	${6}
+
+snippet	wire
+abbr	wire;
+	wire ${1:wire_name};
+	${2}
+
+snippet	wirearray
+abbr	[] wire;
+	wire [${1}:${2:#:0}] ${3:wire_name};
+	${4}
+
+snippet	input
+abbr	input;
+	input ${1:input_name};
+	${2}
+
+snippet	inputarray
+abbr	[] input;
+	input  [${1}:${2:#:0}] ${3:input_name};
+	${4}
+
+snippet	output
+abbr	output;
+	output ${1:output_name};
+	${2}
+
+snippet	outputarray
+abbr	[] output;
+	output [${1}:${2:#:0}] ${3:output_name};
+	${4}
+
+snippet	function
+abbr	function  endfunction;
+	function ${1:#:function_name};
+		${2:portlist};
+		begin
+			${3:code};
+		end
+	endfunction //$1
+	${4}
+
+snippet	casex
+alias mul mux sel mul
+abbr	casex endcase
+	casex(${1:SEL})
+		${2:case_input}: ${3:case_output} = ${4};
+		$2: $3 = ${5};
+		$2: $3 = ${6};
+		$2: $3 = ${7};
+		default: $2: $3 = {};
+	endcase //($1)
+    ${8}
+
+snippet	always
+abbr	always() begin end
+	always@(${1:sensitivity_list}) begin
+		${2:code}
+	end
+    ${3}
+
+snippet always_posCLK
+abbr	always(posedge clock) begin end
+	always@(posedge clock) begin
+		${1:code}
+	end
+    ${2}
+
+snippet	if
+abbr	if() begin end
+	if(${1:#:condition}) begin
+	   ${2:code}
+	end${3}
+    ${4}
+
+snippet if_elif_else
+abbr	if() else if() else
+	if(${1:#:condition1}) begin
+	   ${2:code1}
+	end else if(${3:#:condition2}) begin
+	   ${4:code2}
+	end else begin
+	   ${5:code3}
+	end
+    ${6}
+
+snippet if_else
+abbr	if() else end
+	if(${1:#:condition}) begin
+	   ${2:code1}
+	end else begin
+	   ${3:code2}
+	end
+    ${4}
+
+snippet	initial
+abbr	initial begin end
+	initial begin
+	   ${1:code}
+	end
+    ${2}
+
+snippet	ternary
+abbr	a?b:c
+	${1:a} ? ${2:b} : ${3:c}
+    ${4}
+
+snippet parameter
+abbr parameter
+	parameter ${1:parameter_name} = ${2:parameter_val};
+    ${3}
+
+snippet define
+abbr define
+	`define ${1:define_name} ${2:define_val};
+
+snippet blockram_read_first
+alias	bram_read_first
+abbr	BlockRAM
+	always @(posedge ${1:clock}) begin
+		if (${2:en}) begin
+			if (${3:we}) ${4:RAM}[${5:addr}]<=${6:di};
+			${6:do} <= $4[$5];
+		end
+	end
+    ${0}
+
+snippet blockram_write_first
+alias	bram_write_firtst
+abbr	BlockRAM
+	always @(posedge ${1:clock}) begin
+		if (${2:en}) begin
+			if (${3:we}) begin
+				${4:RAM}[${5:addr}]<=${6:di};
+				${7:do} <= $6;
+			end else $7 <= $4[$5];
+		end
+	end
+    ${0}
+	
+snippet blockram_no_change
+alias	bram_no_change
+abbr	BlockRAM
+	always @(posedge ${1:clock}) begin
+		if (${2:en}) begin
+			if (${3:we}) ${4:RAM}[${5:addr}]<=${6:di};
+			end ${7:do} <= $4[$5];
+		end
+	end
+    ${0}

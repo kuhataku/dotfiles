@@ -167,3 +167,9 @@ set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set t_kD=
 set t_kb=
+
+if !exists("g:neosnippet#snippets_directory")
+    " let g:neosnippet#snippets_directory=""
+    " let g:neosnippet#snippets_directory+="~/.vim/snippets"
+endif
+let g:neosnippet#snippets_directory="~/.vim/snippets"
