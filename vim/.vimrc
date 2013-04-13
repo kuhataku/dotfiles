@@ -119,6 +119,7 @@ NeoBundle 'othree/eregex.vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'git://github.com/mattn/zencoding-vim.git'
 NeoBundle 'git://github.com/vim-scripts/VOoM.git'
+NeoBundle 'thinca/vim-quickrun'
 filetype plugin on
 filetype indent on
 
