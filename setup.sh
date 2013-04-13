@@ -1,10 +1,13 @@
 #/usr/local/bin/bash
 
-DOTFILES_ROOT=`pwd`
+DOTFILES_ROOT=$(cd $(dirname $0); pwd)
 VIM_DOTFILES_ROOT=$DOTFILES_ROOT/vim
 MAC_DOTFILES_ROOT=$DOTFILES_ROOT/mac
 UBUNTU_DOTFILES_ROOT=$DOTFILES_ROOT/ubuntu
 
+cd $DIR
+git submodule init
+git submodule update
 ln -s $VIM_DOTFILES_ROOT/.vimrc ~/
 ln -s $VIM_DOTFILES_ROOT/.vim ~/
 ln -s $DOTFILES_ROOT/.zsh ~/

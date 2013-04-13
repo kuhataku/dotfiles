@@ -179,7 +179,7 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 PATH=/usr/local/bin:$PATH
 
-. `brew --prefix`/etc/profile.d/z.sh
+source ~/.zsh/z/z.sh
 function precmd () {
   z --add "$(pwd -P)"
 }
