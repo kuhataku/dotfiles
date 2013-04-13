@@ -8,6 +8,11 @@ UBUNTU_DOTFILES_ROOT=$DOTFILES_ROOT/ubuntu
 cd $DIR
 git submodule init
 git submodule update
+rm ~/.vimrc
+rm -rf ~/.vim
+rm -rf ~/.zsh
+rm ~/.tmux.conf
+rm -rf ~/.zshrc
 ln -s $VIM_DOTFILES_ROOT/.vimrc ~/
 ln -s $VIM_DOTFILES_ROOT/.vim ~/
 ln -s $DOTFILES_ROOT/.zsh ~/
@@ -21,3 +26,4 @@ elif [ `uname` = "Linux" ]; then
   ln -s $UBUNTU_DOTFILES_ROOT/.zshrc ~/
 #Linux用のコード
 fi
+ln -s $VIM_DOTFILES_ROOT/.vim/neobundle/neosnippet/autoload/neosnippet/snippet/* $DOTFILES_ROOT/vim/.vim/snippets/

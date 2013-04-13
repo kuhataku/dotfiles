@@ -16,9 +16,4 @@
 [submodule "z"]
 	path = z
 	url = /Users/takuya/Works/dotfiles/.zsh/z/
-[submodule "edit-server"]
-	path = edit-server
-	url = /Users/takuya/Works/dotfiles/mac/edit-server
-[submodule "jellybeans.vim"]
-	path = jellybeans.vim
-	url = /Users/takuya/Works/dotfiles/vim/jellybeans.vim/
+    ignore = dirty
