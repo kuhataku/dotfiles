@@ -10,3 +10,9 @@
 [submodule ".zsh/z"]
 	path = .zsh/z
 	url = https://github.com/rupa/z.git
+[submodule "z"]
+	path = z
+	url = /Users/takuya/Works/dotfiles/.zsh/z/
+[submodule "edit-server"]
+	path = edit-server
+	url = /Users/takuya/Works/dotfiles/mac/edit-server
