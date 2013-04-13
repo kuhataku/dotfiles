@@ -14,25 +14,22 @@ autoload colors
 colors
 case ${UID} in
 0)
-  PROMPT="{${fg[red]}%}<^L^>$ "
+  PROMPT="%B%{${fg[green]}%}[%/]%{${reset_color}%}%b
+${fg[red]}%<^L^>%$ "
   PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
   SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
-  RPROMPT="%B%{${fg[green]}%}[%/]%{${reset_color}%}%b"
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-  PROMPT="%{${fg[white]}%}${PROMPT}"
   ;;
 *)
-  PROMPT="%(?.%F{blue}<^L^><%f.%F{red}<.L.><%f) "
+  PROMPT="%B%{${fg[yellow]}%}[%/]%{${reset_color}%}%b
+%{${fg[red]}%}<^L^>$ "
   # PROMPT="{${fg[red]}%}<^L^>$ "
-  # PROMPT="%{${fg[white]}%}[ %{${fg[blue]}%}%T%{${fg[white]}%} ] $ "
   PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
   SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
   [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
-  RPROMPT="%{${fg[green]}%}[%/]%{${reset_color}%}%b"
-  PROMPT="%{${fg[white]}%}${PROMPT}"
   ;;
 esac
-RPROMPT="%{${fg[green]}%}[%/]%{${reset_color}%}%b"
+RPROMPT="%{${fg[green]}%}[%n@%m]%{${reset_color}%}%b"
 # auto change directory
 #
 setopt auto_cd
@@ -187,30 +184,13 @@ source ~/.zsh/auto-fu.zsh/auto-fu.zsh
 function zle-line-init(){
     auto-fu-init
 }
+afu+cancel-and-accept-line() {
+    ((afu_in_p == 1)) && { afu_in_p=0; BUFFER="$buffer_cur" }
+    zle afu+accept-line
+}
+zle -N afu+cancel-and-accept-line
 zle -N zle-line-init
 alias peep='~/.zsh/peep/peep'
 export BROWSER=w3m
-
-tmux_localworks(){
-    tmux new-window -n splitwindow;
-    tmux send-keys -t:splitwindow "cd ~/Works/ISDL" C-m;
-    tmux split-window -w;
-    tmux new-window -n twitter;
-    tmux send-keys -t:twitter "vim -c TweetVimHomeTimeline" C-m;
-    tmux new-window -n peep;
-    tmux send-keys -t:peep  "peep" C-m
-}
-
-tmux_kappaworks(){
-    tmux new-session -s works;
-    tmux new-window -a -n splitwindow;
-    tmux send-keys -t splitwindow "cd ~/Works/ISDL" C-m
-    tmux new-window -a -n kappa;
-    tmux send-keys -t kappa "ssh takuya@kappa" C-m
-    tmux new-window -a -n twitter;
-    tmux send-keys -t twitter "vim -c TweetVimHomeTimeline" C-m
-    tmux new-window -a -n peep;
-    tmux send-keys -t peep  "peep" C-m
-}
 
 function chpwd() { ls }

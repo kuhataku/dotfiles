@@ -23,7 +23,7 @@ if [ `uname` = "Darwin" ]; then
 #mac用のコード
 elif [ `uname` = "Linux" ]; then
   ln -s $UBUNTU_DOTFILES_ROOT/.tmux.conf ~/
-  ln -s $UBUNTU_DOTFILES_ROOT/.zshrc ~/
+  ln -s $MAC_DOTFILES_ROOT/.zshrc ~/
 #Linux用のコード
 fi
 ln -s $VIM_DOTFILES_ROOT/.vim/neobundle/neosnippet/autoload/neosnippet/snippet/* $DOTFILES_ROOT/vim/.vim/snippets/
