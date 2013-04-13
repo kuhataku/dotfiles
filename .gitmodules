@@ -4,15 +4,21 @@
 [submodule ".zsh/peep"]
 	path = .zsh/peep
 	url = git://github.com/nkryu/peep.git
+    ignore = dirty
 [submodule ".zsh/auto-fu.zsh"]
 	path = .zsh/auto-fu.zsh
 	url = git://github.com/hchbaw/auto-fu.zsh.git
+    ignore = dirty
 [submodule ".zsh/z"]
 	path = .zsh/z
 	url = https://github.com/rupa/z.git
+    ignore = dirty
 [submodule "z"]
 	path = z
 	url = /Users/takuya/Works/dotfiles/.zsh/z/
 [submodule "edit-server"]
 	path = edit-server
 	url = /Users/takuya/Works/dotfiles/mac/edit-server
+[submodule "jellybeans.vim"]
+	path = jellybeans.vim
+	url = /Users/takuya/Works/dotfiles/vim/jellybeans.vim/
