@@ -9,11 +9,10 @@
 	path = .zsh/z
 	url = https://github.com/rupa/z.git
     ignore = dirty
-[submodule "z"]
-	path = z
-	url = /Users/takuya/Works/dotfiles/.zsh/z/
-    ignore = dirty
 [submodule "auto-fu.zsh"]
-	path = auto-fu.zsh
+	path = .zsh/auto-fu.zsh
 	url = https://github.com/hchbaw/auto-fu.zsh.git
     ignore = dirty
+[submodule ".zsh/zsh-completions.git"]
+	path = .zsh/zsh-completions.git
+	url = git://github.com/zsh-users/zsh-completions.git
