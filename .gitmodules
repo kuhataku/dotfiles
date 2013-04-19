@@ -5,10 +5,6 @@
 	path = .zsh/peep
 	url = git://github.com/nkryu/peep.git
     ignore = dirty
-[submodule ".zsh/auto-fu.zsh"]
-	path = .zsh/auto-fu.zsh
-	url = git://github.com/hchbaw/auto-fu.zsh.git
-    ignore = dirty
 [submodule ".zsh/z"]
 	path = .zsh/z
 	url = https://github.com/rupa/z.git
@@ -16,4 +12,8 @@
 [submodule "z"]
 	path = z
 	url = /Users/takuya/Works/dotfiles/.zsh/z/
+    ignore = dirty
+[submodule "auto-fu.zsh"]
+	path = auto-fu.zsh
+	url = https://github.com/hchbaw/auto-fu.zsh.git
     ignore = dirty
