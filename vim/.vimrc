@@ -119,6 +119,7 @@ NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'git://github.com/mattn/zencoding-vim.git'
 NeoBundle 'git://github.com/vim-scripts/VOoM.git'
 NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'yuratomo/w3m.vim'
 filetype plugin on
 filetype indent on
 
@@ -173,3 +174,7 @@ if !exists("g:neosnippet#snippets_directory")
     " let g:neosnippet#snippets_directory+="~/.vim/snippets"
 endif
 let g:neosnippet#snippets_directory="~/.vim/snippets"
+
+if filereadable(expand('~/.vimrc.local'))
+    source ~/.vimrc.local
+endif

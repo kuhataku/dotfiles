@@ -185,4 +185,4 @@ export BROWSER=w3m
 function chpwd() { ls }
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-fpath=(~/.zsh/zsh-completions/src $fpath)
+fpath=(~/.zsh/zsh-completions.git/src $fpath)
