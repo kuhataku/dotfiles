@@ -186,3 +186,5 @@ function chpwd() { ls }
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 fpath=(~/.zsh/zsh-completions.git/src $fpath)
+# source ~/.vim/neobundle/powerline/powerline/bindings/zsh/powerline.zsh
+zstyle ':auto-fu:var' postdisplay
