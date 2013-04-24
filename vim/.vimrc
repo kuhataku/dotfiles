@@ -108,9 +108,9 @@ NeoBundle 'git://github.com/anyakichi/vim-surround.git'
 "NeoBundle 'git://github.com/Shougo/vinarise.git'
 NeoBundle 'git://github.com/vim-scripts/tComment.git'
 NeoBundle 'git://github.com/vim-scripts/Align.git'
-" NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
+NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 NeoBundle 'taichouchou2/alpaca_powertabline'
-NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+" NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
 NeoBundle 'git://github.com/mattn/webapi-vim.git'
 NeoBundle 'git://github.com/basyura/twibill.vim.git'
 NeoBundle 'git://github.com/tyru/open-browser.vim.git'
@@ -164,7 +164,7 @@ set cursorline
 hi cursorline term=reverse cterm=none ctermbg=242
 
 " Vim-powerline
-" let g:Powerline_symbols = 'fancy'
+let g:Powerline_symbols = 'fancy'
 set t_Co=256
 colorscheme torte
 set encoding=utf-8
