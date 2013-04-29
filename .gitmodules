@@ -1,6 +1,7 @@
 [submodule "vim/.vim/bundle/neobundle.vim"]
 	path = vim/.vim/bundle/neobundle.vim
 	url = git://github.com/Shougo/neobundle.vim.git
+    ignore = dirty
 [submodule ".zsh/peep"]
 	path = .zsh/peep
 	url = git://github.com/nkryu/peep.git
