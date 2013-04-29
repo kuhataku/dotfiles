@@ -126,7 +126,7 @@ let OSTYPE = system('uname')
 
 if OSTYPE == "Darwin\n"
   NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-elseif OSTYPE =="Lunux\n"
+elseif OSTYPE =="Linux\n"
   NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
   let g:Powerline_symbols = 'fancy'
 endif
