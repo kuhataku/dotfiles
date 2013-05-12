@@ -1,65 +1,78 @@
 snippet	module
 abbr	module() endmodule;
-	module ${1:module_name} (${2:port_list}
-			);
-		${3:code};
+	module ${1:#:module_name} (
+		${2:#:port_list}
+	);
+		${3:#:code};
 
 	endmodule//$1
 
-snippet	reg
-abbr	reg;
-	reg ${1:#:reg_name};
-	${2}
+#snippet	reg
+#abbr	reg;
+#	reg ${1:#:reg_name};
+#	${2}
 
 snippet	regarray
 abbr	[] reg;
-	reg [${1}:${2:#:0}] ${3:#:reg_name};
+	reg [${1}:${2:0}] ${3:#:reg_name};
 	${4}
 
 snippet	regmem
 abbr	[] reg [];
-	reg [${1}:${2:#:0}] ${3:#:reg_name} [${4}:${5:#:0}];
+	reg [${1}:${2:0}] ${3:#:reg_name} [${4}:${5:0}];
 	${6}
 
-snippet	wire
-abbr	wire;
-	wire ${1:wire_name};
-	${2}
+#snippet	wire
+#abbr	wire;
+#	wire ${1:wire_name};
+#	${2}
 
 snippet	wirearray
 abbr	[] wire;
-	wire [${1}:${2:#:0}] ${3:wire_name};
+	wire [${1}:${2:0}] ${3:#:wire_name};
 	${4}
 
 snippet	input
 abbr	input;
-	input ${1:input_name};
+	input ${1:#:input_name}
 	${2}
 
 snippet	inputarray
 abbr	[] input;
-	input  [${1}:${2:#:0}] ${3:input_name};
+	input  [${1}:${2:0}] ${3:#:input_name}
 	${4}
 
 snippet	output
 abbr	output;
-	output ${1:output_name};
+	output ${1:#:output_name}
 	${2}
 
 snippet	outputarray
 abbr	[] output;
-	output [${1}:${2:#:0}] ${3:output_name};
+	output [${1}:${2:0}] ${3:#:output_name};
 	${4}
 
 snippet	function
 abbr	function  endfunction;
 	function ${1:#:function_name};
-		${2:portlist};
+		${2:#:portlist};
 		begin
 			${3:code};
 		end
 	endfunction //$1
 	${4}
+
+snippet	case
+alias mul mux sel mul
+abbr	case endcase
+	case(${1:SEL})
+		${2:case_input}: ${3:case_output} = ${4};
+		$2: $3 = ${5};
+		$2: $3 = ${6};
+		$2: $3 = ${7};
+		default: $3 = {};
+	endcase //($1)
+    ${8}
 
 snippet	casex
 alias mul mux sel mul
@@ -69,7 +82,7 @@ abbr	casex endcase
 		$2: $3 = ${5};
 		$2: $3 = ${6};
 		$2: $3 = ${7};
-		default: $2: $3 = {};
+		default: $3 = {};
 	endcase //($1)
     ${8}
 
@@ -81,8 +94,8 @@ abbr	always() begin end
     ${3}
 
 snippet always_posCLK
-abbr	always(posedge clock) begin end
-	always@(posedge clock) begin
+abbr	always(posedge CLK) begin end
+	always@(posedge CLK) begin
 		${1:code}
 	end
     ${2}
