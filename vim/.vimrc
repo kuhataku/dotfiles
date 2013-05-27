@@ -1,13 +1,5 @@
 set laststatus=2
 
-set tabstop=4 sts=2 sw=2
-"python
-"
-autocmd FileType python setl smartindent cinwords=if,else,elif,while,try,exept,finally,def,class
-autocmd FileType python setl tabstop=8 sts=4 sw=4
-"verilog
-autocmd FileType verilog setl smartindent cinwords=if,else,while
-autocmd FIleType verilog setl tabstop=8 sts=3 sw=3
 
 " タブをスペースに展開しない (expandtab:展開する)
 set expandtab
@@ -99,29 +91,35 @@ endif
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'git://github.com/basyura/unite-rails.git'
+NeoBundle 'git://github.com/Shougo/neocomplcache-rsense.vim'
+NeoBundle 'git://github.com/Shougo/vimproc.vim'
 " NeoBundle 'git://github.com/Shougo/neocomplcache-snippets-complete.git'
 NeoBundle 'git://github.com/Shougo/neosnippet.git'
-NeoBundle 'git://github.com/anyakichi/vim-surround.git'
+NeoBundle 'git://github.com/tpope/vim-surround.git'
+NeoBundle 'git://github.com/tpope/vim-rails.git'
 "NeoBundle 'git://github.com/Shougo/vim-vcs.git'
-"NeoBundle 'git://github.com/Shougo/vimfiler.git'
+NeoBundle 'git://github.com/Shougo/vimfiler.git'
 "NeoBundle 'git://github.com/Shougo/vimshell.git'
 "NeoBundle 'git://github.com/Shougo/vinarise.git'
 NeoBundle 'git://github.com/vim-scripts/tComment.git'
 NeoBundle 'git://github.com/vim-scripts/Align.git'
-NeoBundle 'taichouchou2/alpaca_powertabline'
-NeoBundle 'git://github.com/mattn/webapi-vim.git'
-NeoBundle 'git://github.com/basyura/twibill.vim.git'
-NeoBundle 'git://github.com/tyru/open-browser.vim.git'
-NeoBundle 'git://github.com/basyura/bitly.vim.git'
-NeoBundle 'git://github.com/basyura/TweetVim.git'
+" NeoBundle 'taichouchou2/alpaca_powertabline'
+" NeoBundle 'git://github.com/mattn/webapi-vim.git'
+" NeoBundle 'git://github.com/basyura/twibill.vim.git'
+" NeoBundle 'git://github.com/tyru/open-browser.vim.git'
+" NeoBundle 'git://github.com/basyura/bitly.vim.git'
+" NeoBundle 'git://github.com/basyura/TweetVim.git'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'h1mesuke/unite-outline'
 NeoBundle 'git://github.com/mattn/zencoding-vim.git'
 NeoBundle 'git://github.com/vim-scripts/VOoM.git'
 NeoBundle 'thinca/vim-quickrun'
-NeoBundle 'yuratomo/w3m.vim'
+" NeoBundle 'yuratomo/w3m.vim'
 NeoBundle 'rhysd/clever-f.vim'
-
+NeoBundle 'vim-ruby/vim-ruby'
+" NeoBundle 'taichouchou2/vim-rsense'
+" NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 let OSTYPE = system('uname')
 
 if OSTYPE == "Darwin\n"
@@ -133,6 +131,7 @@ endif
 
 filetype plugin on
 filetype indent on
+NeoBundleCheck
 
 " PATH
 let $PATH="~/.vim:".$PATH
@@ -140,11 +139,26 @@ let $PATH="~/.vim:".$PATH
 " neocompl
 let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_enable_auto_select = 1
+let g:neocomplcache_enable_smart_case = 1
 let g:neocomplcache_enable_underbar_completion = 1
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
+inoremap <expr><BS> neocomplcache#smart_close_popup()."\<C-h>"
 " imap <Tab> <Plug>(neosnippet_expand_or_jump)
 " smap <Tab> <Plug>(neosnippet_expand_or_jump)
+" <CR>: close popup and save indent.
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function()
+  return neocomplcache#smart_close_popup() . "\<CR>"
+endfunction
+  " For no inserting <CR> key.
+  "return pumvisible() ? neocomplcache#close_popup() : "\<CR>"
 inoremap <expr><C-y> neocomplcache#close_popup()
 inoremap <expr><C-e> neocomplcache#cancel_popup()
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Plugin key-mappings.
 imap <C-k>     <Plug>(neosnippet_expand_or_jump)
@@ -205,3 +219,43 @@ if version >= 703
 endif
 
 
+" for rails
+autocmd BufNewFile,BufRead app/*/*.erb    setlocal ft=eruby fenc=utf-8
+autocmd BufNewFile,BufRead app/**/*.rb    setlocal ft=ruby  fenc=utf-8
+autocmd BufNewFile,BufRead app/**/*.yml   setlocal ft=ruby  fenc=utf-8
+autocmd FileType ruby,haml,eruby,sass,cucumber,mason setlocal ts=2 sts=2 sw=2 et nowrap
+
+" for unite
+noremap <C-U><C-B> :Unite buffer<CR>
+noremap <C-U><C-C> :UniteWIthBufferDir -buffer-name=files file<CR>
+noremap <C-U><C-A> :Unite file file_mru buffer<CR>
+noremap <C-U><C-R> :Unite file_mru<CR>
+noremap <C-U><C-Y> :Unite -buffer-name=register register<CR>
+
+" for vimfiler
+nnoremap <silent> <Leader>f :VimFiler -split -simple -winwidth=35 -no-quit<CR>
+let g:vimfiler_as_default_explorer = 1
+let g:vimfiler_safe_mode_by_default = 0
+
+" rsense
+let g:neocomplcache#sources#rsense#home_directory = '~/.vim/directories/rsense-0.3'
+let g:rsenseUseOmniFunc = 1
+let g:rsenseHome="~/.vim/directories/rsense-0.3"
+if !exists('g:neocomplcache_omni_patterns')
+      let g:neocomplcache_omni_patterns={}
+endif
+let g:neocomplcache_omni_patterns.ruby='[^. *\t]\.\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.php='[^. \t]->\h\w*\|\h\w*::'
+let g:neocomplcache_omni_patterns.c='\%(\.\|->\)\h\w*'
+let g:neocomplcache_omni_patterns.cpp='\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
+
+
+set tabstop=4 sts=2 sw=2
+"python
+"
+autocmd FileType python setl smartindent cinwords=if,else,elif,while,try,exept,finally,def,class
+autocmd FileType python setl tabstop=8 sts=4 sw=4
+"verilog
+autocmd FileType verilog setl smartindent cinwords=if,else,while
+autocmd FIleType verilog setl tabstop=8 sts=3 sw=3
+set noshowmode
