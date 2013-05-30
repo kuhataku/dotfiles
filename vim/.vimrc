@@ -118,6 +118,7 @@ NeoBundle 'thinca/vim-quickrun'
 " NeoBundle 'yuratomo/w3m.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'vim-ruby/vim-ruby'
+NeoBundle 'vim-scripts/sudo.vim'
 " NeoBundle 'taichouchou2/vim-rsense'
 " NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 let OSTYPE = system('uname')
