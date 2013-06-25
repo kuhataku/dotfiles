@@ -202,7 +202,7 @@ esac
 
 source ~/.zsh/z/z.sh
 function precmd () {
-  z --add "$(pwd -P)"
+  _z --add "$(pwd -P)"
 }
 source ~/.zsh/auto-fu.zsh/auto-fu.zsh
 function zle-line-init(){

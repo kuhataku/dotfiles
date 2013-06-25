@@ -63,14 +63,6 @@ noremap j gj
 noremap k gk
 
 " ------------------------
-" 挿入モードでも移動できるようにする．
-" ------------------------
-inoremap <C-h> <Left>
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-l> <Right>
-
-" ------------------------
 " neocomplcacheの色設定
 " ------------------------
 highlight Pmenu ctermbg=4
@@ -160,11 +152,12 @@ autocmd FileType html,markdown setlocal omnifunc=htmlcomplete#CompleteTags
 autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
 
 " Plugin key-mappings.
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_or_target)
+imap <C-q>     <Plug>(neosnippet_expand_or_jump)
+smap <C-q>     <Plug>(neosnippet_expand_or_jump)
+xmap <C-q>     <Plug>(neosnippet_expand_or_target)
 
 " " SuperTab like snippets behavior.
 " imap <expr><TAB> neosnippet#expandable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
@@ -189,7 +182,7 @@ hi cursorline term=reverse cterm=none ctermbg=242
 
 " Vim-powerline
 set t_Co=256
-colorscheme torte
+colorscheme default
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set t_kD=
@@ -218,7 +211,6 @@ if version >= 703
     endif
   endfunction
 endif
-
 
 " for rails
 autocmd BufNewFile,BufRead app/*/*.erb    setlocal ft=eruby fenc=utf-8
@@ -250,13 +242,21 @@ let g:neocomplcache_omni_patterns.php='[^. \t]->\h\w*\|\h\w*::'
 let g:neocomplcache_omni_patterns.c='\%(\.\|->\)\h\w*'
 let g:neocomplcache_omni_patterns.cpp='\h\w*\%(\.\|->\)\h\w*\|\h\w*::'
 
-
 set tabstop=4 sts=2 sw=2
 "python
-"
 autocmd FileType python setl smartindent cinwords=if,else,elif,while,try,exept,finally,def,class
 autocmd FileType python setl tabstop=8 sts=4 sw=4
+"java
+autocmd FileType java setl smartindent cinwords=if,else,while,try,exept,finally,public,class
+autocmd FileType java setl tabstop=8 sts=4 sw=4
 "verilog
 autocmd FileType verilog setl smartindent cinwords=if,else,while
 autocmd FIleType verilog setl tabstop=8 sts=3 sw=3
 set noshowmode
+" ------------------------
+" 挿入モードでも移動できるようにする．
+" ------------------------
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
