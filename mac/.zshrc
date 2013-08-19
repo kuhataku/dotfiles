@@ -224,3 +224,5 @@ fpath=(~/.zsh/zsh-completions.git/src $fpath)
 # source ~/.vim/neobundle/powerline/powerline/bindings/zsh/powerline.zsh
 zstyle ':auto-fu:var' postdisplay
 alias fcd='source /usr/local/bin/fcd.sh'
+autoload zmv
+alias zmv='noglob zmv'

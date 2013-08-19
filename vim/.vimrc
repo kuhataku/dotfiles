@@ -1,6 +1,5 @@
 set laststatus=2
 
-
 " タブをスペースに展開しない (expandtab:展開する)
 set expandtab
 " 自動的にインデントする (noautoindent:インデントしない)
@@ -80,6 +79,7 @@ endif
 
 "NeoBundle 'git://github.com/Shougo/clang_complete.git'
 "NeoBundle 'git://github.com/Shougo/echodoc.git'
+NeoBundle 'nanotech/jellybeans.vim'
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
@@ -96,7 +96,7 @@ NeoBundle 'git://github.com/Shougo/vimfiler.git'
 "NeoBundle 'git://github.com/Shougo/vinarise.git'
 NeoBundle 'git://github.com/vim-scripts/tComment.git'
 NeoBundle 'git://github.com/vim-scripts/Align.git'
-" NeoBundle 'taichouchou2/alpaca_powertabline'
+NeoBundle 'taichouchou2/alpaca_powertabline'
 " NeoBundle 'git://github.com/mattn/webapi-vim.git'
 " NeoBundle 'git://github.com/basyura/twibill.vim.git'
 " NeoBundle 'git://github.com/tyru/open-browser.vim.git'
@@ -111,12 +111,17 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'vim-scripts/sudo.vim'
+NeoBundle 'ujihisa/unite-colorscheme'
 " NeoBundle 'taichouchou2/vim-rsense'
 " NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 let OSTYPE = system('uname')
 
 if OSTYPE == "Darwin\n"
-  NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+  " NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+  NeoBundle 'bling/vim-airline'
+  NeoBundle "osyo-manga/unite-airline_themes"
+  let g:airline_powerline_fonts = 1
+  let g:airline_theme = 'simple'
 elseif OSTYPE =="Linux\n"
   NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
   let g:Powerline_symbols = 'fancy'
@@ -182,7 +187,7 @@ hi cursorline term=reverse cterm=none ctermbg=242
 
 " Vim-powerline
 set t_Co=256
-colorscheme default
+colorscheme jellybeans
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set t_kD=
