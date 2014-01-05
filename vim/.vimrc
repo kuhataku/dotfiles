@@ -119,7 +119,7 @@ let OSTYPE = system('uname')
 NeoBundle "osyo-manga/unite-airline_themes"
 NeoBundle 'bling/vim-airline'
 " let g:airline_powerline_fonts = 1
-let g:airline_theme = 'simple'
+let g:airline_theme = 'ubaryd'
 " if OSTYPE == "Darwin\n"
 "   NeoBundle 'bling/vim-airline'
 "   NeoBundle "osyo-manga/unite-airline_themes"
