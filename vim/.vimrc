@@ -99,7 +99,7 @@ NeoBundle 'git://github.com/vim-scripts/Align.git'
 NeoBundle 'taichouchou2/alpaca_powertabline'
 " NeoBundle 'git://github.com/mattn/webapi-vim.git'
 " NeoBundle 'git://github.com/basyura/twibill.vim.git'
-" NeoBundle 'git://github.com/tyru/open-browser.vim.git'
+NeoBundle 'git://github.com/tyru/open-browser.vim.git'
 " NeoBundle 'git://github.com/basyura/bitly.vim.git'
 " NeoBundle 'git://github.com/basyura/TweetVim.git'
 NeoBundle 'othree/eregex.vim'
@@ -112,14 +112,26 @@ NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
+NeoBundle 'git://github.com/tpope/vim-fugitive.git'
+NeoBundle 'tpope/vim-markdown'
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'mattn/webapi-vim'
+NeoBundle 'mattn/excelview-vim'
+NeoBundle 'moznion/hateblo.vim'
+NeoBundle 'superbrothers/vim-quickrun-markdown-gfm'
+NeoBundle 'w0ng/vim-hybrid' " A dark colour scheme for Vim & gVim
+NeoBundle 'itchyny/lightline.vim'
 " NeoBundle 'taichouchou2/vim-rsense'
 " NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 let OSTYPE = system('uname')
 
-NeoBundle "osyo-manga/unite-airline_themes"
-NeoBundle 'bling/vim-airline'
+" if OSTYPE == "Darwin\n"
+"   " NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+" NeoBundle "osyo-manga/unite-airline_themes"
+" NeoBundle 'bling/vim-airline'
 " let g:airline_powerline_fonts = 1
-let g:airline_theme = 'ubaryd'
+" let g:airline_theme = 'ubaryd'
+" let g:airline_theme = 'simple'
 " if OSTYPE == "Darwin\n"
 "   NeoBundle 'bling/vim-airline'
 "   NeoBundle "osyo-manga/unite-airline_themes"
@@ -161,6 +173,7 @@ autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
 autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
+let g:neocomplcache_force_overwrite_completefunc = 1
 
 " Plugin key-mappings.
 imap <C-q>     <Plug>(neosnippet_expand_or_jump)
@@ -190,7 +203,8 @@ hi cursorline term=reverse cterm=none ctermbg=242
 
 " Vim-powerline
 set t_Co=256
-colorscheme jellybeans
+" colorscheme jellybeans
+colorscheme hybrid
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set t_kD=
@@ -268,3 +282,41 @@ inoremap <C-h> <Left>
 inoremap <C-j> <Down>
 inoremap <C-k> <Up>
 inoremap <C-l> <Right>
+
+vnoremap * "zy:let @/ = @z<CR>n
+let g:user_zen_expandabbr_key = '<TAB>'
+
+" gitv setting
+autocmd FileType gitv call s:my_gitv_settings()
+function! s:my_gitv_settings()
+  nnoremap <buffer> <Space>rb :<C-u>Git rebase <C-r>=GitvGetCurrentHash()<CR><Space>
+  nnoremap <buffer> <Space>R :<C-u>Git revert <C-r>=GitvGetCurrentHash()<CR><CR>
+  nnoremap <buffer> <Space>h :<C-u>Git cherry-pick <C-r>=GitvGetCurrentHash()<CR><CR>
+  nnoremap <buffer> <Space>rh :<C-u>Git reset --hard <C-r>=GitvGetCurrentHash()<CR>
+
+  nnoremap <silent><buffer> t :<C-u>windo call <SID>toggle_git_folding()<CR>1<C-w>
+endfunction
+autocmd FileType git setlocal nofoldenable foldlevel=0
+function! s:toggle_git_folding()
+  if &filetype ==# 'git'
+    setlocal foldenable!
+  endif
+endfunction
+function! s:gitv_get_current_hash()
+  return matchstr(getline('.'), '\[\zs.\{7\}\ze\]$')
+endfunction
+
+let g:quickrun_config = {
+\   'markdown': {
+\     'type': 'markdown/gfm',
+\     'outputter': 'browser'
+\   }
+\ }
+let g:lightline = {
+      \ 'colorscheme': 'jellybeans',
+      \ 'component': {
+      \   'readonly': '%{&readonly?"⭤":""}',
+      \ },
+      \ 'separator': { 'left': '⮀', 'right': '⮂' },
+      \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
+      \ }
