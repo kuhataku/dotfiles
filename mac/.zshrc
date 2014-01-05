@@ -13,6 +13,9 @@ export LANG=ja_JP.UTF-8
 autoload -Uz colors
 colors
 autoload -Uz vcs_info
+autoload -Uz select-word-style
+select-word-style bash
+typeset -U path PATH
 zstyle ':vcs_info:*' enable git
 # 下のformatsの値をそれぞれの変数に入れてくれる機能の、変数の数の最大。
 # デフォルトだと2くらいなので、指定しておかないと、下のformatsがほぼ動かない。
@@ -225,4 +228,4 @@ fpath=(~/.zsh/zsh-completions.git/src $fpath)
 zstyle ':auto-fu:var' postdisplay
 alias fcd='source /usr/local/bin/fcd.sh'
 autoload zmv
-alias zmv='noglob zmv'
+alias zmv='noglob zmv -W'
