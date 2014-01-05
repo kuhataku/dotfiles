@@ -127,6 +127,11 @@ let OSTYPE = system('uname')
 
 " if OSTYPE == "Darwin\n"
 "   " NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
+" NeoBundle "osyo-manga/unite-airline_themes"
+" NeoBundle 'bling/vim-airline'
+" let g:airline_powerline_fonts = 1
+" let g:airline_theme = 'simple'
+" if OSTYPE == "Darwin\n"
 "   NeoBundle 'bling/vim-airline'
 "   NeoBundle "osyo-manga/unite-airline_themes"
 "   let g:airline_powerline_fonts = 1
