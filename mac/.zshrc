@@ -134,7 +134,7 @@ setopt nolistbeep
 # to end of it)
 #
 bindkey -e
-
+# bindkey "^S" history-incremental-search-forward
 # historical backward/forward search with linehead string binded to ^P/^N
 #
 autoload history-search-end
@@ -229,3 +229,4 @@ zstyle ':auto-fu:var' postdisplay
 alias fcd='source /usr/local/bin/fcd.sh'
 autoload zmv
 alias zmv='noglob zmv -W'
+setopt noflowcontrol
