@@ -122,6 +122,7 @@ NeoBundle 'moznion/hateblo.vim'
 NeoBundle 'superbrothers/vim-quickrun-markdown-gfm'
 NeoBundle 'w0ng/vim-hybrid' " A dark colour scheme for Vim & gVim
 NeoBundle 'itchyny/lightline.vim'
+NeoBundle 'Shougo/neomru.vim'
 " NeoBundle 'taichouchou2/vim-rsense'
 " NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 let OSTYPE = system('uname')
@@ -321,3 +322,7 @@ let g:lightline = {
       \ 'separator': { 'left': '⮀', 'right': '⮂' },
       \ 'subseparator': { 'left': '⮁', 'right': '⮃' }
       \ }
+
+let g:quickrun_config["java"] = {
+      \ 'exec' : ['javac -J-Dfile.encoding=UTF8 %o %s', '%c -Dfile.encoding=UTF8 %s:t:r %a']
+\}
