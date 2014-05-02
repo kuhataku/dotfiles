@@ -3,3 +3,5 @@ doc/tags-ja
 vim/.vim/neobundle/*
 vim/.vim/snippets/*
 !vim/.vim/snippets/verilog.snip
+
+vim/.vim/.netrwhist
