@@ -225,4 +225,4 @@ fpath=(~/.zsh/zsh-completions.git/src $fpath)
 zstyle ':auto-fu:var' postdisplay
 alias fcd='source /usr/local/bin/fcd.sh'
 autoload zmv
-alias zmv='noglob zmv'
+alias zmv='noglob zmv -W'
