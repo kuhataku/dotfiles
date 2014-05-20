@@ -13,6 +13,9 @@ export LANG=ja_JP.UTF-8
 autoload -Uz colors
 colors
 autoload -Uz vcs_info
+autoload -Uz select-word-style
+select-word-style bash
+typeset -U path PATH
 zstyle ':vcs_info:*' enable git
 # 下のformatsの値をそれぞれの変数に入れてくれる機能の、変数の数の最大。
 # デフォルトだと2くらいなので、指定しておかないと、下のformatsがほぼ動かない。
@@ -131,7 +134,7 @@ setopt nolistbeep
 # to end of it)
 #
 bindkey -e
-
+# bindkey "^S" history-incremental-search-forward
 # historical backward/forward search with linehead string binded to ^P/^N
 #
 autoload history-search-end
@@ -226,3 +229,7 @@ zstyle ':auto-fu:var' postdisplay
 alias fcd='source /usr/local/bin/fcd.sh'
 autoload zmv
 alias zmv='noglob zmv -W'
+<<<<<<< HEAD
+=======
+setopt noflowcontrol
+>>>>>>> 1818283fae27a5ffa55cd8442ce1264ef2c66e9a
