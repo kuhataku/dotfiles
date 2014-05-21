@@ -34,7 +34,7 @@ install gd
 install gdbm
 install gdk-pixbuf
 install gettext
-install gfortran
+#install gfortran
 install git
 install glib
 install gmp
@@ -133,10 +133,26 @@ install xvid
 install xz
 install yasm
 install youtube-dl
-#install z
 install zlib
 install zsh-completions
 tap phinze/homebrew-cask || true
 install brew-cask
 cask install google-chrome
 cask install pandoc
+cask install iterm2
+cask install totalfinder
+cask install totalterminal
+cask install dropbox
+cask install unetbootin
+cask install emacs
+cask install evernote
+cask install handbrake
+cask install gyazo
+cask install skype
+cask install keyremap4macbook
+cask install movist
+cask install utorrent
+cask install vlc
+cask install alfred
+cask install bettertouchtool
+cask alfred link
