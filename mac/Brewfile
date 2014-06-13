@@ -135,6 +135,7 @@ install yasm
 install youtube-dl
 install zlib
 install zsh-completions
+install xpdf
 tap phinze/homebrew-cask || true
 install brew-cask
 cask install google-chrome
