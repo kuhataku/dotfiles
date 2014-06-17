@@ -105,7 +105,7 @@ NeoBundle 'git://github.com/tyru/open-browser.vim.git'
 " NeoBundle 'git://github.com/basyura/TweetVim.git'
 NeoBundle 'othree/eregex.vim'
 NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'git://github.com/mattn/zencoding-vim.git'
+NeoBundle 'git://github.com/mattn/emmet-vim.git'
 NeoBundle 'git://github.com/vim-scripts/VOoM.git'
 NeoBundle 'thinca/vim-quickrun'
 " NeoBundle 'yuratomo/w3m.vim'
@@ -326,3 +326,11 @@ let g:lightline = {
 let g:quickrun_config["java"] = {
       \ 'exec' : ['javac -J-Dfile.encoding=UTF8 %o %s', '%c -Dfile.encoding=UTF8 %s:t:r %a']
 \}
+
+function! CopyMatches(reg)
+  let hits = []
+  %s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/ge
+  let reg = empty(a:reg) ? '+' : a:reg
+  execute 'let @'.reg.' = join(hits, "\n") . "\n"'
+endfunction
+command! -register CopyMatches call CopyMatches(<q-reg>)
