@@ -119,7 +119,9 @@ install tig
 install tmux
 install tokyo-cabinet
 install tree
-install tsocks
+#install --HEAD tsocks
+install tor
+install torsocks
 install unixodbc
 install unrar
 install v8
