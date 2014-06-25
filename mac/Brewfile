@@ -122,7 +122,6 @@ install tree
 install tsocks
 install unixodbc
 install unrar
-install v8
 install w3m
 install watch
 install wget
@@ -156,3 +155,4 @@ cask install vlc
 cask install alfred
 cask install bettertouchtool
 cask alfred link
+install v8

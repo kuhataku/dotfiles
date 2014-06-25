@@ -229,7 +229,4 @@ zstyle ':auto-fu:var' postdisplay
 alias fcd='source /usr/local/bin/fcd.sh'
 autoload zmv
 alias zmv='noglob zmv -W'
-<<<<<<< HEAD
-=======
 setopt noflowcontrol
->>>>>>> 1818283fae27a5ffa55cd8442ce1264ef2c66e9a
