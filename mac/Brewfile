@@ -1,3 +1,23 @@
+tap caskroom/homebrew-cask
+install brew-cask
+cask install google-chrome
+cask install pandoc
+cask install iterm2
+cask install totalfinder
+cask install totalterminal
+cask install dropbox
+cask install emacs
+cask install evernote
+cask install handbrake
+cask install gyazo
+cask install skype
+cask install keyremap4macbook
+cask install movist
+cask install utorrent
+cask install vlc
+cask install alfred
+cask install bettertouchtool
+cask alfred link
 update
 upgrade
 install ack
@@ -119,7 +139,6 @@ install tig
 install tmux
 install tokyo-cabinet
 install tree
-#install --HEAD tsocks
 install tor
 install torsocks
 install unixodbc
@@ -137,25 +156,4 @@ install youtube-dl
 install zlib
 install zsh-completions
 install xpdf
-tap phinze/homebrew-cask || true
-install brew-cask
-cask install google-chrome
-cask install pandoc
-cask install iterm2
-cask install totalfinder
-cask install totalterminal
-cask install dropbox
-cask install unetbootin
-cask install emacs
-cask install evernote
-cask install handbrake
-cask install gyazo
-cask install skype
-cask install keyremap4macbook
-cask install movist
-cask install utorrent
-cask install vlc
-cask install alfred
-cask install bettertouchtool
-cask alfred link
 install v8
