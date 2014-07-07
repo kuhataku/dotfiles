@@ -112,6 +112,7 @@ NeoBundle 'thinca/vim-quickrun'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'vim-scripts/sudo.vim'
+NeoBundle 'vim-scripts/verilog_emacsauto.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
 NeoBundle 'git://github.com/tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-markdown'
@@ -123,6 +124,7 @@ NeoBundle 'superbrothers/vim-quickrun-markdown-gfm'
 NeoBundle 'w0ng/vim-hybrid' " A dark colour scheme for Vim & gVim
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Shougo/neomru.vim'
+NeoBundle 'vimtaku/hl_matchit.vim.git'
 " NeoBundle 'taichouchou2/vim-rsense'
 " NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 let OSTYPE = system('uname')
@@ -334,3 +336,4 @@ function! CopyMatches(reg)
   execute 'let @'.reg.' = join(hits, "\n") . "\n"'
 endfunction
 command! -register CopyMatches call CopyMatches(<q-reg>)
+source $VIMRUNTIME/macros/matchit.vim
