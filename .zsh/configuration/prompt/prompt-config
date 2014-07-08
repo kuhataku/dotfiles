@@ -1,0 +1,91 @@
+# set prompt
+#
+autoload -Uz colors
+colors
+autoload -Uz vcs_info
+autoload -Uz select-word-style
+select-word-style bash
+typeset -U path PATH
+zstyle ':vcs_info:*' enable git
+# 下のformatsの値をそれぞれの変数に入れてくれる機能の、変数の数の最大。
+# デフォルトだと2くらいなので、指定しておかないと、下のformatsがほぼ動かない。
+zstyle ':vcs_info:*' max-exports 7
+
+# 左から順番に、vcs_info_msg_{n}_ という名前の変数に格納されるので、下で利用する
+zstyle ':vcs_info:*' formats '%R' '%s' '%b' '%s'
+# 状態が特殊な場合のformats
+zstyle ':vcs_info:*' actionformats '%R' '%s' '%b|%a' '%s'
+
+# 4.3.10以上の場合は、check-for-changesという機能を使う。
+autoload -Uz is-at-least
+if is-at-least 4.3.10; then
+    zstyle ':vcs_info:*' check-for-changes true
+    zstyle ':vcs_info:*' formats '%R' '%S' '%b' '%s' '%c' '%u'
+    zstyle ':vcs_info:*' actionformats '%R' '%S' '%b|%a' '%s' '%c' '%u'
+fi
+
+# zshのPTOMPTに渡す文字列は、可読性がそんなに良くなくて、読み書きしたり、つまりデバッグが
+# 大変なため、文字列を組み立てるのは関数でやることにする。
+# そのほうが分岐などを追加するのが楽。
+# この先、追加で表示させたい情報はいろいろでてくるとおもうし。
+function echo_rprompt () {
+    local repos branch st color
+    LANG=ja_JP.UTF-8 vcs_info
+
+    if [[ -n "$vcs_info_msg_2_" ]]; then
+        # if [[ -n "$vcs_info_msg_2_" ]]; then
+            branch="$vcs_info_msg_2_"
+        # else
+        #     branch=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
+        # fi
+
+        if [[ -n "$vcs_info_msg_4_" ]]; then # staged
+            branch="%F{196}$branch%f"
+        elif [[ -n "$vcs_info_msg_5_" ]]; then # unstaged
+            branch="%F{blue}$branch%f"
+        else
+            branch="%F{165}$branch%f"
+        fi
+        # print -n "[%25<..<"
+        # print -n "%F{yellow}$vcs_info_msg_1_%F"
+        # print -n "%<<]"
+
+        # print -n "[%15<..<"
+        print -n "%B["
+        print -nD "%F{green}%60<..<%~%<<%f"
+        print -n "]"
+        print -n "["
+        print -n "$branch"
+        # print -nD "%F{yellow}$repos%f"
+        # print -n "@$branch"
+        # print -n "%<<]"
+        print -n "]%b"
+
+    else
+        print -nD "[%F{green}%60<..<%~%<<%f]"
+    fi
+}
+function echo_trueface() {
+  print "%F{red}<^L^>%f$ "
+}
+
+function echo_falseface() {
+  print "%F{blue}<*L*>%f$ "
+}
+setopt prompt_subst
+case ${UID} in
+0)
+  PROMPT='`echo_rprompt`%(?.`echo_trueface`.`echo_falseface`)'
+  # PROMPT="`echo_rprompt`%(?.`echo_trueface`.`echo_falseface`)"
+  PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
+  SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
+  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+  ;;
+*)
+  PROMPT='`echo_rprompt`%(?.`echo_trueface`.`echo_falseface`)'
+  PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
+  SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
+  [ -n "${REMOTEHOST}${SSH_CONNECTION}" ] && 
+  ;;
+esac
+RPROMPT="%B[%{${fg[yellow]}%}%n@%m%{${reset_color}%}%B]%b"

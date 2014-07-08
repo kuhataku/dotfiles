@@ -1,0 +1,10 @@
+function zle-line-init(){
+    auto-fu-init
+}
+afu+cancel-and-accept-line() {
+    ((afu_in_p == 1)) && { afu_in_p=0; BUFFER="$buffer_cur" }
+    zle afu+accept-line
+}
+zle -N afu+cancel-and-accept-line
+zle -N zle-line-init
+zstyle ':auto-fu:var' postdisplay

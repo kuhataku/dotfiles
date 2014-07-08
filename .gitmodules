@@ -2,10 +2,6 @@
 	path = vim/.vim/bundle/neobundle.vim
 	url = git://github.com/Shougo/neobundle.vim.git
     ignore = dirty
-[submodule ".zsh/peep"]
-	path = .zsh/peep
-	url = git://github.com/nkryu/peep.git
-    ignore = dirty
 [submodule ".zsh/z"]
 	path = .zsh/z
 	url = https://github.com/rupa/z.git

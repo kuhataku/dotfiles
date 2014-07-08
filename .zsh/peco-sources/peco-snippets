@@ -1,0 +1,6 @@
+function peco-snippets() {
+
+    BUFFER=$(cat ~/.sheets/* | peco --query "$LBUFFER")
+    zle clear-screen
+}
+
