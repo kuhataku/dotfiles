@@ -55,7 +55,15 @@ source ~/.zsh/configuration/ls/ls-config
 # load cdr function
 source ~/.zsh/configuration/cdr/cdr
 
+# load z function
 source ~/.zsh/z/z.sh
+
+# load z function
+# source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# load z function
+# source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+
 function precmd () {
   _z --add "$(pwd -P)"
 }
@@ -66,7 +74,6 @@ autoload peco-select-history
 autoload peco-snippets
 autoload peco-cdr
 
-function chpwd() { ls }
 
 ## Keybind configuration
 #
@@ -94,15 +101,6 @@ setopt complete_aliases # aliased ls needs if file/dir completions work
 alias where="command -v"
 alias j="jobs -l"
 
-case "${OSTYPE}" in
-    freebsd*|darwin*)
-        alias ls="ls -G -w"
-        ;;
-    linux*)
-        alias ls="ls --color"
-        ;;
-esac
-
 alias la="ls -a"
 alias lf="ls -F"
 alias ll="ls -l"
@@ -125,5 +123,14 @@ zle -N peco-select-history
 bindkey '^R' peco-select-history
 source ~/.zsh/auto-fu.zsh/auto-fu.zsh
 source ~/.zsh/configuration/auto-fu/auto-fu-config
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
+if [ -d ${HOME}/.rbenv ]; then
+  # export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
+  export PATH=$HOME/.rbenv/bin:$PATH
+  eval "$(rbenv init - zsh)"
+  . ~/.rbenv/completions/rbenv.zsh
+fi
+if [ -d ${HOME}/.pyenv ]; then
+  export PATH="$HOME/.pyenv/bin:$PATH"
+  eval "$(pyenv init -)"
+  . ~/.rbenv/completions/rbenv.zsh
+fi

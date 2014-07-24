@@ -15,4 +15,12 @@ case "${TERM}" in
         zstyle ':completion:*' list-colors \
         ;;
 esac
-
+case "${OSTYPE}" in
+    freebsd*|darwin*)
+        alias ls="ls -G -w"
+        ;;
+    linux*)
+        alias ls="ls --color"
+        ;;
+esac
+function chpwd() { ls }
