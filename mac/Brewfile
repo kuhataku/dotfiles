@@ -5,6 +5,7 @@ cask install pandoc
 cask install iterm2
 cask install totalfinder
 cask install totalterminal
+cask install totalspaces
 cask install dropbox
 cask install emacs
 cask install evernote
