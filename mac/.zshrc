@@ -125,3 +125,5 @@ zle -N peco-select-history
 bindkey '^R' peco-select-history
 source ~/.zsh/auto-fu.zsh/auto-fu.zsh
 source ~/.zsh/configuration/auto-fu/auto-fu-config
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
