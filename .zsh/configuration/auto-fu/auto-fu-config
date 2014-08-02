@@ -1,9 +1,9 @@
 zle-line-init () {auto-fu-init;}; zle -N zle-line-init
-afu+cancel-and-accept-line() {
-    ((afu_in_p == 1)) && { afu_in_p=0; BUFFER="$buffer_cur" }
-    zle afu+accept-line
-}
-zle -N afu+cancel-and-accept-line
-bindkey -M afu "^M" afu+cancel-and-accept-line
+#afu+cancel-and-accept-line() {
+#    ((afu_in_p == 1)) && { afu_in_p=0; BUFFER="$buffer_cur" }
+#    zle afu+accept-line
+#}
+#zle -N afu+cancel-and-accept-line
+#bindkey -M afu "^M" afu+cancel-and-accept-line
 zstyle ':auto-fu:var' postdisplay
 zle -N zle-keymap-select auto-fu-zle-keymap-select
