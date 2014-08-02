@@ -158,3 +158,5 @@ install zlib
 install zsh-completions
 install xpdf
 install v8
+tap waltarix/customs
+install waltarix/customs/zsh
