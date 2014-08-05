@@ -125,7 +125,7 @@ source ~/.zsh/auto-fu.zsh/auto-fu.zsh
 source ~/.zsh/configuration/auto-fu/auto-fu-config
 if [ -d ${HOME}/.rbenv ]; then
   # export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
-  export PATH=$HOME/.rbenv/bin:$PATH
+  # export PATH=$HOME/.rbenv/bin:$PATH
   eval "$(rbenv init - zsh)"
   . ~/.rbenv/completions/rbenv.zsh
 fi

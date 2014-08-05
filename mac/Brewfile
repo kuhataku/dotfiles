@@ -155,8 +155,9 @@ install xz
 install yasm
 install youtube-dl
 install zlib
+install zsh
 install zsh-completions
 install xpdf
 install v8
-tap waltarix/customs
-install waltarix/customs/zsh
+tap kechako/zsh
+install zsh-custom
