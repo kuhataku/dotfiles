@@ -164,3 +164,7 @@ install zsh-custom
 install dfc
 install dstat || true
 install screenfetch
+install rbenv
+install ruby-build
+install rbenv-gem-rehash
+install pyenv
