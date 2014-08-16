@@ -161,3 +161,6 @@ install xpdf
 install v8
 tap kechako/zsh
 install zsh-custom
+install dfc
+install dstat || true
+install screenfetch
