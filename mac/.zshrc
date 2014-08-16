@@ -124,13 +124,8 @@ bindkey '^R' peco-select-history
 source ~/.zsh/auto-fu.zsh/auto-fu.zsh
 source ~/.zsh/configuration/auto-fu/auto-fu-config
 if [ -d ${HOME}/.rbenv ]; then
-  # export PATH=$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH
-  # export PATH=$HOME/.rbenv/bin:$PATH
-  eval "$(rbenv init - zsh)"
-  . ~/.rbenv/completions/rbenv.zsh
+  eval "$(rbenv init -)"
 fi
 if [ -d ${HOME}/.pyenv ]; then
-  export PATH="$HOME/.pyenv/bin:$PATH"
   eval "$(pyenv init -)"
-  . ~/.rbenv/completions/rbenv.zsh
 fi

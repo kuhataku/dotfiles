@@ -161,3 +161,7 @@ install xpdf
 install v8
 tap kechako/zsh
 install zsh-custom
+install rbenv
+install ruby-build
+install rbenv-gem-rehash
+install pyenv
