@@ -1,0 +1,36 @@
+; export PATH="/Applications/UpTeX.app/teTeX/bin:$PATH"
+alias gvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim -g "$@"'
+alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+export PATH=/usr/local/sbin:/usr/local/bin:$PATH
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export MANPATH=/opt/local/man:$MANPATH
+export PATH=/usr/texbin:$PATH
+
+export PATH=/usr/local/bin:$PATH
+
+_rake_does_task_list_need_generating () {
+  if [ ! -f .rake_tasks ]; then return 0;
+  else
+    accurate=$(stat -f%m .rake_tasks)
+    changed=$(stat -f%m Rakefile)
+    return $(expr $accurate '>=' $changed)
+  fi
+}
+
+_rake () {
+  if [ -f Rakefile ]; then
+    if _rake_does_task_list_need_generating; then
+      echo "\nGenerating .rake_tasks..." > /dev/stderr
+      rake --silent --tasks | cut -d " " -f 2 > .rake_tasks
+    fi
+    compadd `cat .rake_tasks`
+  fi
+}
+
+compdef _rake rake
+export PATH=$PATH:~/bin
+alias nicodl='/usr/local/bin/nicovideo-dl -u takuyamasayuki5@hotmail.com -p kuhataku'
+mp4tom4a(){
+  ffmpeg -i $1.mp4 -acodec copy $1.m4a
+}
+export HOMEBREW_CASK_OPTS="--appdir=/Applications"

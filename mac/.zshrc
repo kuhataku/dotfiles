@@ -67,6 +67,14 @@ source ~/.zsh/z/z.sh
 function precmd () {
   _z --add "$(pwd -P)"
 }
+case "{$OSTYPE}" in
+  darwin*)
+    [ -f ~/.zsh/zshrc/zshrc.mac ] && source ~/.zsh/zshrc/zshrc.mac
+    ;;
+  linux*)
+    [ -f ~/.zsh/zshrc/zshrc.linux ] && source ~/.zsh/zshrc/zshrc.linux
+    ;;
+esac
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # load peco function
