@@ -18,6 +18,7 @@ cask install utorrent
 cask install vlc
 cask install alfred
 cask install bettertouchtool
+cask install mactex
 cask alfred link
 update
 upgrade
@@ -168,3 +169,4 @@ install rbenv
 install ruby-build
 install rbenv-gem-rehash
 install pyenv
+install ghostscript
