@@ -72,7 +72,6 @@ darwin*)
   [ -f ~/.zsh/zshrc/.zshrc.mac ] && source ~/.zsh/zshrc/.zshrc.mac
   ;;
 linux*)
-  echo 'unko'
   [ -f ~/.zsh/zshrc/.zshrc.linux ] && source ~/.zsh/zshrc/.zshrc.linux
   ;;
 esac
