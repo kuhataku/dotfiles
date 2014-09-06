@@ -1,0 +1,6 @@
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.pybenv/bin:$PATH"
+alias tmux="tmux -2"
+TERM=xterm-color; export TERM
+export PATH=$PATH:~/scripts
+export EDITOR=vim
