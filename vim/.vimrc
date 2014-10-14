@@ -276,6 +276,7 @@ autocmd FileType python setl tabstop=8 sts=4 sw=4
 autocmd FileType java setl smartindent cinwords=if,else,while,try,exept,finally,public,class
 autocmd FileType java setl tabstop=8 sts=4 sw=4
 "verilog
+autocmd BufNewFile,BufRead *.sv set filetype=verilog
 autocmd FileType verilog setl smartindent cinwords=if,else,while
 autocmd FIleType verilog setl tabstop=8 sts=3 sw=3
 set noshowmode
