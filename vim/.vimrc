@@ -73,9 +73,10 @@ set nocompatible
 filetype off
 
 if has('vim_starting')
+  set nocompatible
   set runtimepath+=~/.vim/bundle/neobundle.vim
-  call neobundle#rc(expand('~/.vim/neobundle'))
 endif
+call neobundle#begin(expand('~/.vim/neobundle'))
 
 "NeoBundle 'git://github.com/Shougo/clang_complete.git'
 "NeoBundle 'git://github.com/Shougo/echodoc.git'
@@ -145,7 +146,7 @@ let OSTYPE = system('uname')
 "   NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
 "   let g:Powerline_symbols = 'fancy'
 " endif
-
+call neobundle#end()
 filetype plugin on
 filetype indent on
 NeoBundleCheck
