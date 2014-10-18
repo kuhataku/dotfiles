@@ -34,3 +34,68 @@ mp4tom4a(){
   ffmpeg -i $1.mp4 -acodec copy $1.m4a
 }
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
+_itunes_list_tracks() {
+  osascript <<EOF
+tell application "iTunes"
+  set accumulator to ""
+  repeat with t in every track
+    set output to "" & (id of t) & tab & "\"" & (name of t) & "\"" & tab & "\"" & (artist of t) & "\""
+    set trackInfo to do shell script "echo " & quoted form of output without altering line endings
+    set accumulator to accumulator & trackInfo
+  end repeat
+end tell
+EOF
+}
+
+_itunes_delete_playlist() {
+  osascript <<EOF
+tell application "iTunes"
+  try
+    delete user playlist "$1"
+  end try
+end tell
+EOF
+}
+
+_itunes_add_track_to_playlist() {
+  osascript <<EOF
+set myPlaylistName to "$2"
+tell application "iTunes"
+  try
+    set myPlaylist to user playlist myPlaylistName
+  on error
+    set myPlaylist to (make new user playlist with properties {name:myPlaylistName})
+  end try
+
+  duplicate (every track whose id is "$1") to myPlaylist
+end tell
+EOF
+}
+
+_itunes_play_playlist() {
+  osascript <<EOF
+tell application "iTunes"
+  play user playlist "$1"
+end tell
+EOF
+}
+
+peco-itunes() {
+  local playlistName="Peco-iTunes"
+
+  local tracks=$(_itunes_list_tracks | peco --prompt "${playlistName}>" | awk '{print $1}')
+
+  if [ -z "$tracks" ] ; then
+    return
+  fi
+
+  _itunes_delete_playlist $playlistName
+
+  local IFS=$'\n'
+  for track in $tracks ; do
+    IFS=" "; _itunes_add_track_to_playlist "$track" "$playlistName"
+  done
+
+  _itunes_play_playlist "$playlistName"
+}
