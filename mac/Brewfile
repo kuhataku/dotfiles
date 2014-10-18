@@ -120,8 +120,6 @@ install potrace
 install ppl011
 install protobuf
 install pstree
-install python
-install python3
 install qt
 install r
 install rdesktop
