@@ -42,12 +42,12 @@ noremap <S-CR> o<ESC>
 " ------------------------
 " 括弧自動補完
 " ------------------------
-inoremap { {}<LEFT>
-inoremap [ []<LEFT>
-inoremap ( ()<LEFT>
-inoremap ” “”<LEFT>
-inoremap " ""<LEFT>
-inoremap ‘ ”<LEFT>
+" inoremap { {}<LEFT>
+" inoremap [ []<LEFT>
+" inoremap ( ()<LEFT>
+" inoremap ” “”<LEFT>
+" inoremap " ""<LEFT>
+" inoremap ‘ ”<LEFT>
 " ------------------------
 " ShiftUPDOWNで進みすぎないようにする
 " ------------------------
@@ -69,7 +69,6 @@ highlight PmenuSel ctermbg=1
 highlight PMenuSbar ctermbg=4
 
 " neobundle
-set nocompatible
 filetype off
 
 if has('vim_starting')
@@ -78,44 +77,33 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand('~/.vim/neobundle'))
 
-"NeoBundle 'git://github.com/Shougo/clang_complete.git'
-"NeoBundle 'git://github.com/Shougo/echodoc.git'
+NeoBundleFetch 'Shougo/neobundle.vim.git'
 NeoBundle 'nanotech/jellybeans.vim'
-NeoBundle 'git://github.com/Shougo/neocomplcache.git'
-NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
-NeoBundle 'git://github.com/Shougo/unite.vim.git'
-NeoBundle 'git://github.com/basyura/unite-rails.git'
-NeoBundle 'git://github.com/Shougo/neocomplcache-rsense.vim'
-NeoBundle 'git://github.com/Shougo/vimproc.vim'
-" NeoBundle 'git://github.com/Shougo/neocomplcache-snippets-complete.git'
-NeoBundle 'git://github.com/Shougo/neosnippet.git'
-NeoBundle 'git://github.com/Shougo/neosnippet-snippets.git'
-NeoBundle 'git://github.com/tpope/vim-surround.git'
-NeoBundle 'git://github.com/tpope/vim-rails.git'
-"NeoBundle 'git://github.com/Shougo/vim-vcs.git'
-NeoBundle 'git://github.com/Shougo/vimfiler.git'
-"NeoBundle 'git://github.com/Shougo/vimshell.git'
-"NeoBundle 'git://github.com/Shougo/vinarise.git'
-NeoBundle 'git://github.com/vim-scripts/tComment.git'
-NeoBundle 'git://github.com/vim-scripts/Align.git'
+NeoBundle 'Shougo/neocomplcache.git'
+NeoBundle 'Shougo/unite.vim.git'
+NeoBundle 'basyura/unite-rails.git'
+NeoBundle 'Shougo/neocomplcache-rsense.vim'
+NeoBundle 'Shougo/vimproc.vim'
+NeoBundle 'Shougo/neosnippet.git'
+NeoBundle 'Shougo/neosnippet-snippets.git'
+NeoBundle 'tpope/vim-surround.git'
+NeoBundle 'tpope/vim-rails.git'
+NeoBundle 'Shougo/vimfiler.git'
+NeoBundle 'vim-scripts/tComment.git'
+NeoBundle 'vim-scripts/Align.git'
 NeoBundle 'taichouchou2/alpaca_powertabline'
-" NeoBundle 'git://github.com/mattn/webapi-vim.git'
-" NeoBundle 'git://github.com/basyura/twibill.vim.git'
-NeoBundle 'git://github.com/tyru/open-browser.vim.git'
-" NeoBundle 'git://github.com/basyura/bitly.vim.git'
-" NeoBundle 'git://github.com/basyura/TweetVim.git'
-NeoBundle 'othree/eregex.vim'
+NeoBundle 'tyru/open-browser.vim.git'
+" NeoBundle 'othree/eregex.vim'
 NeoBundle 'h1mesuke/unite-outline'
-NeoBundle 'git://github.com/mattn/emmet-vim.git'
-NeoBundle 'git://github.com/vim-scripts/VOoM.git'
+NeoBundle 'mattn/emmet-vim.git'
+NeoBundle 'vim-scripts/VOoM.git'
 NeoBundle 'thinca/vim-quickrun'
-" NeoBundle 'yuratomo/w3m.vim'
 NeoBundle 'rhysd/clever-f.vim'
 NeoBundle 'vim-ruby/vim-ruby'
 NeoBundle 'vim-scripts/sudo.vim'
 NeoBundle 'vim-scripts/verilog_emacsauto.vim'
 NeoBundle 'ujihisa/unite-colorscheme'
-NeoBundle 'git://github.com/tpope/vim-fugitive.git'
+NeoBundle 'tpope/vim-fugitive.git'
 NeoBundle 'tpope/vim-markdown'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'mattn/webapi-vim'
@@ -126,29 +114,12 @@ NeoBundle 'w0ng/vim-hybrid' " A dark colour scheme for Vim & gVim
 NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'vimtaku/hl_matchit.vim.git'
-" NeoBundle 'taichouchou2/vim-rsense'
-" NeoBundle 'git://github.com/scrooloose/nerdtree.git'
-let OSTYPE = system('uname')
+NeoBundle 'cohama/lexima.vim.git'
+NeoBundle 'Lokaltog/vim-easymotion'
+NeoBundle 'haya14busa/incsearch.vim'
 
-" if OSTYPE == "Darwin\n"
-"   " NeoBundle 'Lokaltog/powerline', { 'rtp' : 'powerline/bindings/vim'}
-" NeoBundle "osyo-manga/unite-airline_themes"
-" NeoBundle 'bling/vim-airline'
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme = 'ubaryd'
-" let g:airline_theme = 'simple'
-" if OSTYPE == "Darwin\n"
-"   NeoBundle 'bling/vim-airline'
-"   NeoBundle "osyo-manga/unite-airline_themes"
-"   let g:airline_powerline_fonts = 1
-"   let g:airline_theme = 'simple'
-" elseif OSTYPE =="Linux\n"
-"   NeoBundle 'git://github.com/Lokaltog/vim-powerline.git'
-"   let g:Powerline_symbols = 'fancy'
-" endif
 call neobundle#end()
-filetype plugin on
-filetype indent on
+filetype plugin indent on
 NeoBundleCheck
 
 " PATH
@@ -208,8 +179,8 @@ hi cursorline term=reverse cterm=none ctermbg=242
 
 " Vim-powerline
 set t_Co=256
-" colorscheme jellybeans
-colorscheme hybrid
+colorscheme jellybeans
+" colorscheme hybrid
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set t_kD=
@@ -339,3 +310,10 @@ function! CopyMatches(reg)
 endfunction
 command! -register CopyMatches call CopyMatches(<q-reg>)
 source $VIMRUNTIME/macros/matchit.vim
+
+map / <Plug>(incsearch-forward)
+map ? <Plug>(incsearch-backward)
+map <Leader> <Plug>(easymotion-prefix)
+map f <Plug>(easymotion-bd-fl)
+map t <Plug>(easymotion-bd-tl)
+map <Space> <Plug>(easymotion-s2)
