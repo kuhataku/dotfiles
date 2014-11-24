@@ -1,6 +1,5 @@
 tap caskroom/homebrew-cask
 install brew-cask
-cask install google-chrome
 cask install pandoc
 cask install iterm2
 cask install totalfinder
@@ -107,11 +106,9 @@ install node
 install opencv
 install openssl
 install ossp-uuid
-install osxfuse
 install p7zip
 install pango
 install pcre
-install php54
 install pidof
 install pixman
 install pkg-config
