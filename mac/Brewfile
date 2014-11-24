@@ -18,6 +18,7 @@ cask install vlc
 cask install alfred
 cask install bettertouchtool
 cask install mactex
+cask install shiftit
 cask alfred link
 update
 upgrade
@@ -50,7 +51,6 @@ install freetype
 install fuse4x
 install fuse4x-kext
 install gcc46
-install gcc47
 install gd
 install gdbm
 install gdk-pixbuf

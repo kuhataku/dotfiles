@@ -67,15 +67,6 @@ source ~/.zsh/z/z.sh
 function precmd () {
   _z --add "$(pwd -P)"
 }
-case $OSTYPE in
-darwin*)
-  [ -f ~/.zsh/zshrc/.zshrc.mac ] && source ~/.zsh/zshrc/.zshrc.mac
-  ;;
-linux*)
-  [ -f ~/.zsh/zshrc/.zshrc.linux ] && source ~/.zsh/zshrc/.zshrc.linux
-  ;;
-esac
-[ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
 # load peco function
 autoload peco-select-history
@@ -131,6 +122,17 @@ zle -N peco-select-history
 bindkey '^R' peco-select-history
 source ~/.zsh/auto-fu.zsh/auto-fu.zsh
 source ~/.zsh/configuration/auto-fu/auto-fu-config
+
+case $OSTYPE in
+darwin*)
+  [ -f ~/.zsh/zshrc/.zshrc.mac ] && source ~/.zsh/zshrc/.zshrc.mac
+  ;;
+linux*)
+  [ -f ~/.zsh/zshrc/.zshrc.linux ] && source ~/.zsh/zshrc/.zshrc.linux
+  ;;
+esac
+[ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
 if [ -d ${HOME}/.rbenv ]; then
   eval "$(rbenv init -)"
 fi
