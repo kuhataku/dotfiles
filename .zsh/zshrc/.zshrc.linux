@@ -1,4 +1,6 @@
 export PATH=$HOME/.pyenv/bin:$HOME/.rbenv/bin:$PATH
+test -f ~/.vvm/etc/login && source ~/.vvm/etc/login
+export VVMOPT="--enable-rubyinterp --enable-pythoninterp --with-features=huge --enable-multibyte --enable-rubyinterp --enable-pythoninterp=dynamic --enable-perlinterp=dynamic --enable-luainterp=dynamic --enable-python3interp=dynamic --enable-gpm --enable-xim --enable-cscope --enable-fontset  --with-luajit"
 alias tmux="tmux -2"
 TERM=xterm-color; export TERM
 export PATH=$PATH:~/scripts
