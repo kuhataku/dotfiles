@@ -103,7 +103,7 @@ alias j="jobs -l"
 alias la="ls -a"
 alias lf="ls -F"
 alias ll="ls -l"
-alias g="|grep"
+alias -g g="|grep"
 alias du="du -h"
 alias df="df -h"
 

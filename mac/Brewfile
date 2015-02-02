@@ -19,7 +19,8 @@ cask install alfred
 cask install bettertouchtool
 cask install mactex
 cask install shiftit
-cask alfred link
+cask install gimp
+cask install inkscape
 update
 upgrade
 install ack
