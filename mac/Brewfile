@@ -19,6 +19,8 @@ cask install alfred
 cask install bettertouchtool
 cask install mactex
 cask install shiftit
+cask install gimp
+cask install inkscape
 update
 upgrade
 install ack
@@ -108,7 +110,6 @@ install ossp-uuid
 install p7zip
 install pango
 install pcre
-install php54
 install pidof
 install pixman
 install pkg-config
