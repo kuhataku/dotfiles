@@ -19,7 +19,6 @@ cask install alfred
 cask install bettertouchtool
 cask install mactex
 cask install shiftit
-cask alfred link
 update
 upgrade
 install ack
@@ -106,7 +105,6 @@ install node
 install opencv
 install openssl
 install ossp-uuid
-install osxfuse
 install p7zip
 install pango
 install pcre
