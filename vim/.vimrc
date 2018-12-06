@@ -123,9 +123,15 @@ NeoBundle 'itchyny/lightline.vim'
 NeoBundle 'Shougo/neomru.vim'
 NeoBundle 'vimtaku/hl_matchit.vim.git'
 NeoBundle 'cohama/lexima.vim.git'
-NeoBundle 'Lokaltog/vim-easymotion'
+" NeoBundle 'Lokaltog/vim-easymotion'
 NeoBundle 'haya14busa/incsearch.vim'
-
+NeoBundle 'fatih/vim-go'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'dhruvasagar/vim-table-mode'
+" 補完用に jedi-vim を追加
+let $PATH="~/.anyenv/envs/pyenv/shims:".$PATH
+" NeoBundle "davidhalter/jedi-vim"
 call neobundle#end()
 filetype plugin indent on
 NeoBundleCheck
@@ -187,8 +193,9 @@ hi cursorline term=reverse cterm=none ctermbg=242
 
 " Vim-powerline
 set t_Co=256
-colorscheme jellybeans
+" colorscheme jellybeans
 " colorscheme hybrid
+colorscheme solarized
 set encoding=utf-8
 set fillchars+=stl:\ ,stlnc:\
 set t_kD=
@@ -298,7 +305,7 @@ let g:quickrun_config = {
 \   }
 \ }
 let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+      \ 'colorscheme': 'solarized',
       \ 'component': {
       \   'readonly': '%{&readonly?"⭤":""}',
       \ },
@@ -321,7 +328,12 @@ source $VIMRUNTIME/macros/matchit.vim
 
 map / <Plug>(incsearch-forward)
 map ? <Plug>(incsearch-backward)
-map <Leader> <Plug>(easymotion-prefix)
-map f <Plug>(easymotion-bd-fl)
-map t <Plug>(easymotion-bd-tl)
-map <Space> <Plug>(easymotion-s2)
+" map <Leader> <Plug>(easymotion-prefix)
+" map f <Plug>(easymotion-bd-fl)
+" map t <Plug>(easymotion-bd-tl)
+" map <Space> <Plug>(easymotion-s2)
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_structs = 1
+au BufNewFile,BufRead *.go set filetype=go
+command! E Explore

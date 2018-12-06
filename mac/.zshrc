@@ -132,10 +132,19 @@ linux*)
   ;;
 esac
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+if [ -d $HOME/.anyenv ] ; then
+    export PATH="$HOME/.anyenv/bin:$PATH"
+    eval "$(anyenv init -)"
 
+    for D in `ls $HOME/.anyenv/envs`
+    do
+        export PATH="$HOME/.anyenv/envs/$D/shims:$PATH"
+    done
+fi
 if [ -d ${HOME}/.rbenv ]; then
   eval "$(rbenv init -)"
 fi
-if [ -d ${HOME}/.pyenv ]; then
-  eval "$(pyenv init -)"
-fi
+# Hook for desk activation
+[ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
+
+export CLASSPATH=".:/usr/local/Cellar/antlr/4.5.3/antlr-4.5.3-complete.jar:$CLASSPATH"
