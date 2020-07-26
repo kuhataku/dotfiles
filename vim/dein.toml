@@ -1,0 +1,299 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+[[plugins]]
+repo = 'Shougo/neosnippet.vim'
+hook_add = '''
+imap <C-q> <Plug>(neosnippet_expand_or_jump)
+smap <C-q> <Plug>(neosnippet_expand_or_jump)
+xmap <C-q> <Plug>(neosnippet_expand_or_target)
+
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : pumvisible() ? "\<C-n>" : "\<TAB>"
+smap <expr><TAB> neosnippet#expandable_or_jumpable() ? "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
+if has('conceal')
+  set conceallevel=2 concealcursor=i
+endif
+'''
+
+[[plugins]]
+repo = 'Shougo/neosnippet-snippets'
+
+[[plugins]]
+repo = 'Shougo/neomru.vim'
+on_source = ['denite.nvim']
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
+depends = ['neomru.vim']
+hook_add = ''' autocmd FileType denite call s:denite_my_settings()
+  function! s:denite_my_settings() abort
+    nnoremap <silent><buffer><expr> <CR>
+    \ denite#do_map('do_action')
+    nnoremap <silent><buffer><expr> d
+    \ denite#do_map('do_action', 'delete')
+    nnoremap <silent><buffer><expr> p
+    \ denite#do_map('do_action', 'preview')
+    nnoremap <silent><buffer><expr> q
+    \ denite#do_map('quit')
+    nnoremap <silent><buffer><expr> i
+    \ denite#do_map('open_filter_buffer')
+    nnoremap <silent><buffer><expr> <Space>
+    \ denite#do_map('toggle_select').'j'
+  endfunction
+  noremap <C-U><C-B> :<C-U>Denite buffer<CR>
+  noremap <C-U><C-A> :<C-U>Denite file file_mru buffer<CR>
+  noremap <C-U><C-R> :Denite file_mru<CR>
+  noremap <C-U><C-G> :Denite grep<CR>
+  noremap <C-U><C-L> :Denite line<CR>
+'''
+
+[[plugins]]
+repo = 'itchyny/lightline.vim'
+
+[[plugins]]
+repo = 'vim-scripts/Align.git'
+hook_add = 'let g:Align_xstrlen = 3'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+hook_add = '''
+let g:lsp_diagnostics_enabled = 1
+  let g:lsp_diagnostics_echo_cursor = 1
+  let g:asyncomplete_auto_popup = 1
+  let g:asyncomplete_auto_completeopt = 0
+  let g:asyncomplete_popup_delay = 200
+  let g:lsp_text_edit_enabled = 0
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-buffer.vim'
+on_source = ['asyncomplete.vim']
+on_ft = ['autohotkey', 'autoit', 'cfg', 'git', 'go', 'groovy', 'java', 'javascript', 'python', 'snippet', 'toml', 'vim', 'vb', 'xsl', 'rust', 'c', 'cpp', 'perl']
+hook_add = '''
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#buffer#get_source_options({
+      \ 'name': 'buffer',
+      \ 'priority': 5,
+      \ 'whitelist': ['*'],
+      \ 'completor': function('asyncomplete#sources#buffer#completor'),
+      \ }))
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-file.vim'
+on_source = ['asyncomplete.vim']
+hook_add = '''
+  au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#file#get_source_options({
+      \ 'name': 'file',
+      \ 'priority': 3,
+      \ 'whitelist': ['*'],
+      \ 'completor': function('asyncomplete#sources#file#completor'),
+      \ }))
+'''
+
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-icons'
+
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+build = 'make'
+
+[[plugins]]
+repo = 'nanotech/jellybeans.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+
+[[plugins]]
+repo = 'tpope/vim-surround.git'
+
+[[plugins]]
+repo = 'tpope/vim-rails.git'
+[[plugins]] repo = 'vim-scripts/tComment.git'
+
+[[plugins]]
+repo = 'taichouchou2/alpaca_powertabline'
+
+[[plugins]]
+repo = 'mattn/emmet-vim.git'
+
+[[plugins]]
+repo = 'vim-scripts/VOoM.git'
+
+[[plugins]]
+repo = 'thinca/vim-quickrun'
+hook_add = """
+let g:quickrun_config = {
+\   'markdown': {
+\     'type': 'markdown/gfm',
+\     'outputter': 'browser'
+\   }
+\ }
+
+let g:quickrun_config["java"] = {
+      \ 'exec' : ['javac -J-Dfile.encoding=UTF8 %o %s', '%c -Dfile.encoding=UTF8 %s:t:r %a']
+\}
+"""
+
+[[plugins]]
+repo = 'rhysd/clever-f.vim'
+
+[[plugins]]
+repo = 'vim-scripts/sudo.vim'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive.git'
+
+[[plugins]]
+repo = 'tpope/vim-markdown'
+
+[[plugins]]
+repo = 'gregsexton/gitv'
+hook_add = """
+  au FileType gitv call s:my_gitv_settings()
+  function! s:my_gitv_settings()
+    nnoremap <buffer> <Space>rb :<C-u>Git rebase <C-r>=GitvGetCurrentHash()<CR><Space>
+    nnoremap <buffer> <Space>R :<C-u>Git revert <C-r>=GitvGetCurrentHash()<CR><CR>
+    nnoremap <buffer> <Space>h :<C-u>Git cherry-pick <C-r>=GitvGetCurrentHash()<CR><CR>
+    nnoremap <buffer> <Space>rh :<C-u>Git reset --hard <C-r>=GitvGetCurrentHash()<CR>
+
+    nnoremap <silent><buffer> t :<C-u>windo call <SID>toggle_git_folding()<CR>1<C-w>
+  endfunction
+  au FileType git setlocal nofoldenable foldlevel=0
+  function! s:toggle_git_folding()
+    if &filetype ==# 'git'
+      setlocal foldenable!
+    endif
+  endfunction
+  function! s:gitv_get_current_hash()
+    return matchstr(getline('.'), '\[\zs.\{7\}\ze\]$')
+  endfunction
+"""
+
+[[plugins]]
+repo = 'superbrothers/vim-quickrun-markdown-gfm'
+
+[[plugins]]
+repo = 'w0ng/vim-hybrid'
+
+[[plugins]]
+repo = 'vimtaku/hl_matchit.vim.git'
+
+[[plugins]]
+repo = 'cohama/lexima.vim.git'
+
+[[plugins]]
+repo = 'haya14busa/incsearch.vim'
+
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+
+[[plugins]]
+repo = 'dhruvasagar/vim-table-mode'
+
+[[plugins]]
+repo = 'gilligan/vim-lldb'
+hook_add = """
+  let g:loaded_lldb = 1
+"""
+
+[[plugins]]
+repo = 'vim-scripts/taglist.vim'
+hook_add = """
+  let Tlist_Ctags_Cmd = "/usr/local/bin/ctags"
+  let Tlist_Show_One_File = 1
+  let Tlist_Use_Right_Window = 1
+  let Tlist_Exit_OnlyWindow = 1
+  map <silent> <leader>l :TlistToggle<CR> 
+"""
+
+[[plugins]]
+repo = 'vim-scripts/systemrdl.vim'
+on_ft = 'systemrdl'
+
+[[plugins]]
+repo = 'dense-analysis/ale'
+on_cmd = ['ALELint', 'ALEToggle', 'ALEEnable', 'ALEToggleBuffer', 'ALEEnableBuffer']  
+
+[[plugins]]
+repo ='kristijanhusak/defx-icons'
+
+[[plugins]]
+repo ='kristijanhusak/defx-git'
+hook_add = '''
+	let g:defx_git#indicators = {
+		\ 'Modified'  : '+',
+		\ 'Staged'    : '●',
+		\ 'Untracked' : '?',
+		\ 'Renamed'   : '➜',
+		\ 'Unmerged'  : '═',
+		\ 'Deleted'   : 'x',
+		\ 'Unknown'   : '?'
+		\ }
+'''
+
+[[plugins]]
+repo ='Shougo/defx.nvim'
+on_cmd = 'Defx'
+depends = ['defx-icons', 'defx-git']
+hook_add = '''
+	nnoremap <silent><Space>f :<C-u>Defx -listed -resume -buffer-name=tab`tabpagenr()`<CR>
+'''
+
+[plugins.ftplugin]
+defx = '''
+	nnoremap <silent><buffer><expr> ~ defx#async_action('cd')
+	nnoremap <silent><buffer><expr> h defx#async_action('cd', ['..'])
+	nnoremap <silent><buffer><expr> j line('.') == line('$') ? 'gg' : 'j'
+	nnoremap <silent><buffer><expr> k line('.') == 1 ? 'G' : 'k'
+	nnoremap <silent><buffer><expr> l defx#async_action('open')
+
+	nnoremap <silent><buffer><expr> . defx#do_action('toggle_ignored_files')
+	nnoremap <silent><buffer><expr> <Tab> winnr('$') != 1 ? ':<C-u>wincmd w<CR>' : ':<C-u>Defx -buffer-name=temp -split=vertical<CR>'
+	nnoremap <silent><buffer><expr> <Space> defx#do_action('toggle_select') . 'j'
+	nnoremap <silent><buffer><expr> <CR> defx#do_action('open')
+	nnoremap <silent><buffer><expr> q defx#do_action('quit')
+
+	nnoremap <silent><buffer><expr> o defx#async_action('open_or_close_tree')
+	nnoremap <silent><buffer><expr> O defx#async_action('open_tree_recursive')
+
+	nnoremap <silent><buffer><expr> ! defx#do_action('execute_command')
+	nnoremap <silent><buffer><expr> * defx#do_action('toggle_select_all')
+	nnoremap <silent><buffer><expr> <C-g> defx#do_action('print')
+	nnoremap <silent><buffer><expr> <C-l> defx#do_action('redraw')
+	nnoremap <silent><buffer><expr> E defx#do_action('open', 'vsplit')
+	nnoremap <silent><buffer><expr> K defx#do_action('new_directory')
+	nnoremap <silent><buffer><expr> M defx#do_action('new_multiple_files')
+	nnoremap <silent><buffer><expr> N defx#do_action('new_file')
+	nnoremap <silent><buffer><expr> P defx#do_action('open', 'pedit')
+	nnoremap <silent><buffer><expr> S defx#do_action('toggle_sort', 'Time')
+	nnoremap <silent><buffer><expr> c defx#do_action('copy')
+	nnoremap <silent><buffer><expr> d defx#do_action('remove_trash')
+	nnoremap <silent><buffer><expr> m defx#do_action('move')
+	nnoremap <silent><buffer><expr> p defx#do_action('paste')
+	nnoremap <silent><buffer><expr> r defx#do_action('rename')
+	nnoremap <silent><buffer><expr> se defx#do_action('save_session')
+	nnoremap <silent><buffer><expr> sl defx#do_action('load_session')
+	nnoremap <silent><buffer><expr> x defx#do_action('execute_system')
+	nnoremap <silent><buffer><expr> yy defx#do_action('yank_path')
+'''
+
+[[plugins]]
+repo='prabirshrestha/asyncomplete-neosnippet.vim'
+hook_add = ''' au User asyncomplete_setup call asyncomplete#register_source(asyncomplete#sources#neosnippet#get_source_options({
+    \ 'name': 'neosnippet',
+    \ 'whitelist': ['*'],
+    \ 'completor': function('asyncomplete#sources#neosnippet#completor'),
+    \ }))
+'''
