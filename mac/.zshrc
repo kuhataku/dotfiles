@@ -1,6 +1,7 @@
 # Path settings #
 fpath=(~/.zsh/peco-sources(N-/) $fpath)
 fpath=(~/.zsh/zsh-completions.git/src $fpath)
+fpath=(~/.zsh/poetry $fpath)
 ## go path
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
