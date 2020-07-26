@@ -27,7 +27,6 @@ setopt auto_pushd
 
 # command correct edition before each completion attempt
 setopt correct
-
 # compacked complete list display
 setopt list_packed
 
@@ -55,19 +54,6 @@ source ~/.zsh/configuration/ls/ls-config
 
 # load cdr function
 source ~/.zsh/configuration/cdr/cdr
-
-# load z function
-source ~/.zsh/z/z.sh
-
-# load z function
-# source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# load z function
-# source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-
-function precmd () {
-  _z --add "$(pwd -P)"
-}
 
 # load peco function
 autoload peco-select-history
@@ -121,8 +107,6 @@ zle -N peco-cdr
 bindkey "^x^r" peco-cdr
 zle -N peco-select-history
 bindkey '^R' peco-select-history
-source ~/.zsh/auto-fu.zsh/auto-fu.zsh
-source ~/.zsh/configuration/auto-fu/auto-fu-config
 
 case $OSTYPE in
 darwin*)
@@ -145,7 +129,19 @@ fi
 if [ -d ${HOME}/.rbenv ]; then
   eval "$(rbenv init -)"
 fi
+if [ -d ${HOME}/.pyenv ]; then
+  eval "$(pyenv init -)"
+fi
 # Hook for desk activation
 [ -n "$DESK_ENV" ] && source "$DESK_ENV" || true
 
 export CLASSPATH=".:/usr/local/Cellar/antlr/4.5.3/antlr-4.5.3-complete.jar:$CLASSPATH"
+
+# added by travis gem
+[ -f ~/.travis/travis.sh ] && source ~/.travis/travis.sh
+
+source ~/.poetry/env
+poetry_activate(){
+  source $(dirname $(poetry run which python))/activate
+}
+export PATH="$HOME/.cargo/bin:$PATH"

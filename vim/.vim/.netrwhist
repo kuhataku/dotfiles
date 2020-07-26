@@ -1,5 +1,6 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =3
+let g:netrw_dirhist_cnt =4
 let g:netrw_dirhist_1='/Users/takuya/Works/pyale2/pyale_env/pyale/pyale'
 let g:netrw_dirhist_2='/Users/takuya/Works/pyale2/pyale_env/pyale/pyale/parser'
 let g:netrw_dirhist_3='/Users/takuya/Works/pyale2/pyale_env/pyale/pyale'
+let g:netrw_dirhist_4='/Users/takuya'
